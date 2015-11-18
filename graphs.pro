@@ -13,8 +13,15 @@ TEMPLATE = app
 
 
 SOURCES += main.cpp\
-        graphs.cpp
+        graphs.cpp \
+    qcustomplot.cpp \
+    testweb.cpp
 
-HEADERS  += graphs.h
+HEADERS  += graphs.h \
+    codeeditor.h \
+    entry.h \
+    qcustomplot.h \
+    testweb.h
 
-FORMS    += graphs.ui
+FORMS    += graphs.ui \
+    testweb.ui

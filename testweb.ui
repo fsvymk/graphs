@@ -1,45 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>graphs</class>
- <widget class="QMainWindow" name="graphs">
+ <class>testweb</class>
+ <widget class="QMainWindow" name="testweb">
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>773</width>
-    <height>505</height>
+    <width>603</width>
+    <height>310</height>
    </rect>
   </property>
   <property name="windowTitle">
-   <string>graphs</string>
+   <string>testweb</string>
   </property>
   <widget class="QWidget" name="centralWidget">
    <layout class="QGridLayout" name="gridLayout">
-    <item row="0" column="0">
-     <widget class="QTabWidget" name="tabWidget">
-      <property name="currentIndex">
-       <number>2</number>
+    <item row="0" column="0" colspan="2">
+     <widget class="QWebView" name="webView">
+      <property name="url">
+       <url>
+        <string>about:blank</string>
+       </url>
       </property>
-      <widget class="QWidget" name="tab">
-       <attribute name="title">
-        <string>Main</string>
-       </attribute>
-      </widget>
-      <widget class="QWidget" name="tab_2">
-       <attribute name="title">
-        <string>Graphs</string>
-       </attribute>
-      </widget>
-      <widget class="QWidget" name="tab_3">
-       <attribute name="title">
-        <string>Parser</string>
-       </attribute>
-      </widget>
-      <widget class="QWidget" name="tab_4">
-       <attribute name="title">
-        <string>Settings</string>
-       </attribute>
-      </widget>
      </widget>
     </item>
    </layout>
@@ -49,7 +31,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>773</width>
+     <width>603</width>
      <height>20</height>
     </rect>
    </property>
@@ -65,6 +47,13 @@
   <widget class="QStatusBar" name="statusBar"/>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
+ <customwidgets>
+  <customwidget>
+   <class>QWebView</class>
+   <extends>QWidget</extends>
+   <header>QtWebKitWidgets/QWebView</header>
+  </customwidget>
+ </customwidgets>
  <resources/>
  <connections/>
 </ui>
