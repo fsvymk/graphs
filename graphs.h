@@ -2,6 +2,11 @@
 #define GRAPHS_H
 
 #include <QMainWindow>
+#include <QUdpSocket>
+#include <QMap>
+#include <QtMath>
+
+#include <qcustomplot.h>
 
 namespace Ui {
 class graphs;
