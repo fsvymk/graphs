@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sems>
+    <sem id="1">
+        <name>vkl</name>
+    </sem>
+    <sem id ="2">
+	<name>vik</name>
+    </sem>
+    <sem id="40">
+        <name>che</name>
+    </sem>
+    <sem id ="32">
+	<name>sbr</name>
+    </sem>
+    <sem id="37">
+        <name>nag</name>
+    </sem>
+    <sem id ="55">
+	<name>vid</name>
+    </sem>
+    <sem id="10">
+    <name>str</name>
+    </sem>
+    <sem id ="98">
+	<name>wai</name>
+    </sem>
+    <sem id ="0">
+    <name>options</name>
+    </sem>
+	<sem id ="102">
+	<name>procedure</name>
+	</sem>
+	<sem id ="113">
+	<name>command_name</name>
+    </sem>
+	<sem id ="107">
+	<name>step1</name>
+    </sem>
+	<sem id ="104">
+        <name>calibr</name>
+    </sem>
+	<sem id ="102">
+	<name>scanner</name>
+    </sem>
+	<sem id ="128">
+        <name>call</name>
+    </sem>
+	<sem id ="145">
+        <name>on_end</name>
+	</sem>   
+	<sem id ="219">
+	<name>param1</name>
+    </sem>
+	<sem id ="126">
+	<name>n</name>
+    </sem>
+	<sem id ="124">
+	<name>param2</name>
+    </sem>
+	<sem id ="208">
+	<name>m</name>
+    </sem>
+	<sem id ="202">
+	<name>paramn</name>
+    </sem>
+	<sem id ="210">
+	<name>s</name>
+    </sem>
+	<sem id ="211">
+	<name>end</name>
+    </sem>
+	<sem id ="222">
+	<name>yes</name>
+    </sem>
+	<sem id ="237">
+	<name>result</name>
+    </sem>
+	<sem id ="200">
+	<name>port</name>
+    </sem>
+	<sem id ="250">
+	<name>port_name</name>
+    </sem>
+	<sem id ="225">
+	<name>step</name>
+    </sem>
+	<sem id ="235">
+	<name>exit</name>
+    </sem>
+	<sem id ="215">
+	<name>true</name>
+    </sem>
+	<sem id ="245">
+	<name>false</name>
+	</sem>   
+</sems>

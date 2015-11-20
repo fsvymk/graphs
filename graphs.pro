@@ -4,7 +4,7 @@
 #
 #-------------------------------------------------
 
-QT       += core gui printsupport network webview
+QT       += core gui printsupport network help webkitwidgets
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -15,7 +15,8 @@ TEMPLATE = app
 SOURCES += main.cpp\
         graphs.cpp \
     qcustomplot.cpp \
-    testweb.cpp
+    testweb.cpp \
+    codeeditor.cpp
 
 HEADERS  += graphs.h \
     codeeditor.h \
@@ -25,3 +26,6 @@ HEADERS  += graphs.h \
 
 FORMS    += graphs.ui \
     testweb.ui
+
+RESOURCES += \
+    config.qrc
