@@ -17,3 +17,8 @@ graphs::~graphs()
 {
     delete ui;
 }
+
+void graphs::on_pushButton_5_clicked()
+{
+    ui->tabWidget->addTab();
+}

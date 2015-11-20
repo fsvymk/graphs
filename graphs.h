@@ -20,6 +20,9 @@ public:
     explicit graphs(QWidget *parent = 0);
     ~graphs();
 
+private slots:
+    void on_pushButton_5_clicked();
+
 private:
     Ui::graphs *ui;
 };
