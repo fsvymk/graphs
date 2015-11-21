@@ -21,7 +21,7 @@
        <bool>true</bool>
       </property>
       <property name="currentIndex">
-       <number>3</number>
+       <number>0</number>
       </property>
       <widget class="QWidget" name="tab">
        <attribute name="title">
@@ -29,7 +29,7 @@
        </attribute>
        <layout class="QGridLayout" name="gridLayout_2">
         <item row="0" column="0">
-         <widget class="QPushButton" name="pushButton">
+         <widget class="QPushButton" name="BTN_HELP">
           <property name="text">
            <string>Справка</string>
           </property>
@@ -49,56 +49,56 @@
          <widget class="QTextEdit" name="main_text_bottom"/>
         </item>
         <item row="3" column="0" colspan="2">
-         <widget class="QPushButton" name="pushButton_8">
+         <widget class="QPushButton" name="BTN_START">
           <property name="text">
            <string>Старт</string>
           </property>
          </widget>
         </item>
         <item row="3" column="2" colspan="2">
-         <widget class="QPushButton" name="pushButton_10">
+         <widget class="QPushButton" name="BTN_NEXT">
           <property name="text">
            <string>Далее</string>
           </property>
          </widget>
         </item>
         <item row="3" column="4" colspan="2">
-         <widget class="QPushButton" name="pushButton_7">
+         <widget class="QPushButton" name="BTN_CANCEL">
           <property name="text">
            <string>Отмена</string>
           </property>
          </widget>
         </item>
         <item row="3" column="6" colspan="2">
-         <widget class="QPushButton" name="pushButton_9">
+         <widget class="QPushButton" name="BTN_PAUSE">
           <property name="text">
            <string>Пауза</string>
           </property>
          </widget>
         </item>
         <item row="3" column="8">
-         <widget class="QPushButton" name="pushButton_6">
+         <widget class="QPushButton" name="BTN_STOP">
           <property name="text">
            <string>Стоп</string>
           </property>
          </widget>
         </item>
         <item row="0" column="7" colspan="2">
-         <widget class="QPushButton" name="pushButton_4">
+         <widget class="QPushButton" name="BTN_SEND">
           <property name="text">
            <string>Отправить</string>
           </property>
          </widget>
         </item>
         <item row="0" column="5" colspan="2">
-         <widget class="QPushButton" name="pushButton_3">
+         <widget class="QPushButton" name="BTN_TEST">
           <property name="text">
            <string>Проверить</string>
           </property>
          </widget>
         </item>
         <item row="0" column="3" colspan="2">
-         <widget class="QPushButton" name="pushButton_2">
+         <widget class="QPushButton" name="BTN_OPEN">
           <property name="text">
            <string>Открыть</string>
           </property>
@@ -124,7 +124,7 @@
         <item row="0" column="1">
          <widget class="QToolBox" name="toolBox">
           <property name="currentIndex">
-           <number>0</number>
+           <number>1</number>
           </property>
           <widget class="QWidget" name="page">
            <property name="geometry">
@@ -140,7 +140,7 @@
            </attribute>
            <layout class="QGridLayout" name="gridLayout_7">
             <item row="8" column="0" colspan="9">
-             <widget class="CodeEditor" name="plainTextEdit">
+             <widget class="CodeEditor" name="parser_codeEditor">
               <property name="sizePolicy">
                <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
                 <horstretch>0</horstretch>
@@ -304,28 +304,28 @@ Block block_name_A
              </widget>
             </item>
             <item row="3" column="3">
-             <widget class="QPushButton" name="pushButton_11">
+             <widget class="QPushButton" name="PARSER_BUTTON_SEND">
               <property name="text">
                <string>SEND</string>
               </property>
              </widget>
             </item>
             <item row="3" column="0">
-             <widget class="QPushButton" name="pushButton_12">
+             <widget class="QPushButton" name="PARSER_BUTTON_COMPILE">
               <property name="text">
                <string>COMPILE</string>
               </property>
              </widget>
             </item>
             <item row="3" column="4">
-             <widget class="QLabel" name="label_3">
+             <widget class="QLabel" name="PARSER_LABEL_IP">
               <property name="text">
                <string>IP</string>
               </property>
              </widget>
             </item>
             <item row="3" column="7">
-             <widget class="QLineEdit" name="lineEdit_2">
+             <widget class="QLineEdit" name="PARSER_LINE_PORT">
               <property name="maximumSize">
                <size>
                 <width>50</width>
@@ -335,14 +335,14 @@ Block block_name_A
              </widget>
             </item>
             <item row="3" column="1">
-             <widget class="QPushButton" name="pushButton_13">
+             <widget class="QPushButton" name="PARSER_BUTTON_split">
               <property name="text">
                <string>SPLIT BLOCKS</string>
               </property>
              </widget>
             </item>
             <item row="3" column="5">
-             <widget class="QLineEdit" name="lineEdit">
+             <widget class="QLineEdit" name="PARSER_LINE_IP">
               <property name="maximumSize">
                <size>
                 <width>140</width>
@@ -352,14 +352,14 @@ Block block_name_A
              </widget>
             </item>
             <item row="3" column="2">
-             <widget class="QPushButton" name="pushButton_14">
+             <widget class="QPushButton" name="PARSER_BUTTON_X">
               <property name="text">
                <string>X</string>
               </property>
              </widget>
             </item>
             <item row="3" column="6">
-             <widget class="QLabel" name="label_4">
+             <widget class="QLabel" name="PARSER_LABEL_PORT">
               <property name="text">
                <string>Port</string>
               </property>
@@ -381,24 +381,24 @@ Block block_name_A
            </attribute>
            <layout class="QGridLayout" name="gridLayout_6">
             <item row="0" column="0">
-             <widget class="QLabel" name="label">
+             <widget class="QLabel" name="PARSER_LINE_RESULT">
               <property name="text">
                <string>Result</string>
               </property>
              </widget>
             </item>
             <item row="0" column="1">
-             <widget class="QLabel" name="label_2">
+             <widget class="QLabel" name="PARSER_LABEL_SEMS">
               <property name="text">
                <string>Sems</string>
               </property>
              </widget>
             </item>
             <item row="1" column="0">
-             <widget class="QTextEdit" name="textEdit"/>
+             <widget class="QTextEdit" name="PARSER_TEXT_RESULT"/>
             </item>
             <item row="1" column="1">
-             <widget class="QTextEdit" name="textEdit_2">
+             <widget class="QTextEdit" name="PARSER_TEXT_SEMS">
               <property name="maximumSize">
                <size>
                 <width>200</width>
