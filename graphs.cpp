@@ -20,5 +20,5 @@ graphs::~graphs()
 
 void graphs::on_pushButton_5_clicked()
 {
-    ui->tabWidget->addTab();
+    ui->tabWidget->addTab(); // there are error
 }
