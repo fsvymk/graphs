@@ -21,7 +21,7 @@
        <bool>true</bool>
       </property>
       <property name="currentIndex">
-       <number>0</number>
+       <number>3</number>
       </property>
       <widget class="QWidget" name="tab">
        <attribute name="title">
@@ -31,35 +31,7 @@
         <item row="0" column="0">
          <widget class="QPushButton" name="pushButton">
           <property name="text">
-           <string>1</string>
-          </property>
-         </widget>
-        </item>
-        <item row="0" column="1" colspan="2">
-         <widget class="QPushButton" name="pushButton_2">
-          <property name="text">
-           <string>2</string>
-          </property>
-         </widget>
-        </item>
-        <item row="0" column="3" colspan="2">
-         <widget class="QPushButton" name="pushButton_3">
-          <property name="text">
-           <string>3</string>
-          </property>
-         </widget>
-        </item>
-        <item row="0" column="5" colspan="2">
-         <widget class="QPushButton" name="pushButton_4">
-          <property name="text">
-           <string>4</string>
-          </property>
-         </widget>
-        </item>
-        <item row="0" column="7" colspan="2">
-         <widget class="QPushButton" name="pushButton_5">
-          <property name="text">
-           <string>5</string>
+           <string>Справка</string>
           </property>
          </widget>
         </item>
@@ -79,35 +51,56 @@
         <item row="3" column="0" colspan="2">
          <widget class="QPushButton" name="pushButton_8">
           <property name="text">
-           <string>B1</string>
+           <string>Старт</string>
           </property>
          </widget>
         </item>
         <item row="3" column="2" colspan="2">
          <widget class="QPushButton" name="pushButton_10">
           <property name="text">
-           <string>B2</string>
+           <string>Далее</string>
           </property>
          </widget>
         </item>
         <item row="3" column="4" colspan="2">
          <widget class="QPushButton" name="pushButton_7">
           <property name="text">
-           <string>B3</string>
+           <string>Отмена</string>
           </property>
          </widget>
         </item>
         <item row="3" column="6" colspan="2">
          <widget class="QPushButton" name="pushButton_9">
           <property name="text">
-           <string>B4</string>
+           <string>Пауза</string>
           </property>
          </widget>
         </item>
         <item row="3" column="8">
          <widget class="QPushButton" name="pushButton_6">
           <property name="text">
-           <string>B5</string>
+           <string>Стоп</string>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="7" colspan="2">
+         <widget class="QPushButton" name="pushButton_4">
+          <property name="text">
+           <string>Отправить</string>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="5" colspan="2">
+         <widget class="QPushButton" name="pushButton_3">
+          <property name="text">
+           <string>Проверить</string>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="3" colspan="2">
+         <widget class="QPushButton" name="pushButton_2">
+          <property name="text">
+           <string>Открыть</string>
           </property>
          </widget>
         </item>
