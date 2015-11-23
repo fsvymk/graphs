@@ -29,6 +29,7 @@ private slots:
     // use cases:
     void init();
     void remove(QLayout* layout);
+    void deleteSome();
     QString ss(long x);
     void p(QString str);
 
@@ -40,18 +41,11 @@ private slots:
     void output_db(QHash<unsigned, struct entry> &db);
     void numbers(QHash<unsigned, struct entry> &db);
 
-    //parser:
-    void displayError(int line);
-    void parseLine(const QString& text, int line, const QMap<QString, int> &sems);
-    void processScript(int line, QString type, QString value, QStringList numbers, const QMap<QString, int> &sems);
-    void processUdpDatagram(const QByteArray& data);
-    bool parseSem(QXmlStreamReader& xml, QMap<QString, int> &sems);
-
 private:
     Ui::graphs *ui;
 
     // my properties
-    int cod;
+    int graphCount;
     QUdpSocket udpSocket;
     QUdpSocket udpServerSocket;
     QList<unsigned> graphT;
