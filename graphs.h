@@ -25,7 +25,6 @@ private slots:
     // event listeners:
     void on_pushButton_5_clicked();
 
-
     // use cases:
     void init();
     void remove(QLayout* layout);
@@ -40,6 +39,11 @@ private slots:
     void output_vectors(QVector<double> *x, QVector<double> *y);
     void output_db(QHash<unsigned, struct entry> &db);
     void numbers(QHash<unsigned, struct entry> &db);
+    void delete_graphs(QVBoxLayout* plotsLayout);
+    void clear_plots(QCustomPlot* pl);
+    void bindUdpPort();
+
+    void on_main_button_server_start_clicked();
 
 private:
     Ui::graphs *ui;

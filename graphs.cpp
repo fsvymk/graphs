@@ -11,6 +11,7 @@ graphs::graphs(QWidget *parent) :
     ui(new Ui::graphs)
 {
     ui->setupUi(this);
+    init();             // Точка входа. Будет занят порт UDP для входящих сообщений.
 }
 
 graphs::~graphs()
@@ -19,6 +20,10 @@ graphs::~graphs()
 }
 
 // Events
+void graphs::on_main_button_server_start_clicked()
+{
+    bindUdpPort();
+}
 
 void graphs::on_pushButton_5_clicked()
 {
@@ -56,6 +61,16 @@ void graphs::init(){
     vbox    = (QVBoxLayout*)ui->widget->layout();
 }
 
+void graphs::delete_graphs(QVBoxLayout* plotsLayout)
+{
+    while (QLayoutItem* item = plotsLayout->takeAt(0)) {    delete item;    }
+}
+
+void graphs::clear_plots(QCustomPlot* pl)
+{
+    pl->clearGraphs();
+}
+
 void graphs::deleteSome(){
 
     ui->main_text_bottom->clear();
@@ -69,7 +84,7 @@ void graphs::deleteSome(){
         plots[i].graph(0)->clearData();
         plots[i].xAxis->rescale();
         plots[i].replot();
-        PL1->removeWidget(&plots[i]);
+        vbox->removeWidget(&plots[i]);
     }
     vbox->replaceWidget(&plots[0], &plots[o], Qt::FindChildrenRecursively);
     graphT.clear();
@@ -92,17 +107,15 @@ void graphs::readUdpDatagrams()
         if (datagram.size()>datagramMaxSize) datagramMaxSize = datagram.size();
         ui->line_maxdata->setText(ss(datagramMaxSize));
 
-        //QHash<unsigned, struct entry> db;
         entryMassDeserialize(&datagram, &db);
 
         QString output = "QHash db ["+QString::number(db.count())+"].";
         ui->main_text_top->append(output);
 
-        //output_db(db);
+        output_db(db);
         //output_vectors(&_x,&_y);
         //draw(&_x,&_y);
         //numbers(db);
-
         //realTime_Redraw();
     }
 }
@@ -156,8 +169,56 @@ void graphs::entryMassDeserialize(QByteArray* source,
 void graphs::output_db(QHash<unsigned, entry> &db){
      QHash<unsigned, entry>::const_iterator i;
      for (i = db.constBegin(); i != db.constEnd(); ++i){
-            ui->textVectors->append(QString::number(i.key()) + ":");
-             ui->textVectors->append(entryToString(i.value()));
+            ui->main_text_bottom->append(QString::number(i.key()) + ":");
+             ui->main_text_bottom->append(toString(i.value()));
          }
 }
 
+void graphs::numbers(QHash<unsigned, struct entry> &db){
+    int it = 0;
+    db.insert(0, deserialize(NULL));
+}
+
+
+void graphs::remove(QLayout* layout)
+{
+    QLayoutItem* child;
+    while(layout->count()!=0)
+    {
+        child = layout->takeAt(0);
+        if(child->layout() != 0)
+        {
+            remove(child->layout());
+        }
+        else if(child->widget() != 0)
+        {
+            delete child->widget();
+        }
+
+        delete child;
+    }
+}
+
+
+
+void graphs::output_vectors(QVector<double>* x, QVector<double>* y){
+    int cntx = x->size();
+    int cnty = y->size();
+    int i;
+    QString outstr;
+    for(i=0; i<cntx; i++){
+        outstr = "" + QString::number(i) + " ";
+        outstr += QString::number(x->at(i)) + " ";
+        outstr += QString::number(y->at(i)) + "?";
+
+        p(outstr);
+    }
+}
+
+
+void graphs::bindUdpPort()
+{
+    quint16 port = ui->lineEdit_bind->text().toInt();
+    if (udpServerSocket.bind(port)) { ui->main_button_server_start->setEnabled(false);}
+    else {      p("Ошибка запуска сервера");     }
+}
