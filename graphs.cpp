@@ -36,6 +36,10 @@ void graphs::on_pushButton_5_clicked()
 
 // Use cases:
 
+void graphs::t(QString str){
+    ui->main_text_top->append(str);
+}
+
 void graphs::p(QString str){
     ui->main_text_bottom->append(str);
 }
@@ -109,8 +113,8 @@ void graphs::readUdpDatagrams()
 
         entryMassDeserialize(&datagram, &db);
 
-        QString output = "QHash db ["+QString::number(db.count())+"].";
-        ui->main_text_top->append(output);
+        //QString output = "QHash db ["+QString::number(db.count())+"].";
+        //ui->main_text_top->append(output);
 
         output_db(db);
         //output_vectors(&_x,&_y);
@@ -221,4 +225,259 @@ void graphs::bindUdpPort()
     quint16 port = ui->lineEdit_bind->text().toInt();
     if (udpServerSocket.bind(port)) { ui->main_button_server_start->setEnabled(false);}
     else {      p("Ошибка запуска сервера");     }
+}
+
+
+// four.cpp
+
+
+void graphs::useCase_parser_show()
+{
+
+    //parser->show();
+}
+
+void graphs::useCase_mainwindow()
+{
+    //MainWindow *MW = new MainWindow();
+    //MW->show();
+}
+
+void graphs::useCase_help()
+{
+    //Testweb *help = new Testweb();
+    //help->show();
+   //help->setGeometry(20,60,760,540);
+}
+
+void graphs::setNonEditMode( QWidget& Widget , bool bNonEditMode )
+{
+    // Проход по QLineEdit - там для соответствующего изменения их ReadOnly и FocusPolicy
+    QList<QTextEdit*> LE_List = Widget.findChildren<QTextEdit*>();
+
+    for ( QList<QTextEdit*>::iterator it = LE_List.begin(); it != LE_List.end(); it++ )
+    {
+        (*it)->setReadOnly( bNonEditMode );
+        if ( bNonEditMode )
+            (*it)->setFocusPolicy(Qt::NoFocus);
+        else
+            (*it)->setFocusPolicy(Qt::StrongFocus);
+    };
+
+    // Проход по QLabel - лам для соответствующего изменения их Enabled
+    QList<QLabel*> LB_List = Widget.findChildren<QLabel*>();
+
+    for ( QList<QLabel*>::iterator it = LB_List.begin(); it != LB_List.end(); it++ )
+    {
+        (*it)->setEnabled( !bNonEditMode );
+    };
+}
+
+QByteArray graphs::makeNewDatagram(){
+    return QByteArray();
+}
+
+void graphs::processUdpDatagram(const QByteArray &data)
+{
+
+}
+
+/*
+void graphs::t(const QString &message)
+{
+    qDebug() << message;
+}*/
+
+void graphs::oprosb()
+{
+    udpSocketSend = new QUdpSocket(this);
+    udpSocketGet  = new QUdpSocket(this);
+    QHostAddress host("192.168.1.101");
+    QHostAddress bcast("192.168.1.255");
+
+    udpSocketSend->connectToHost(bcast,16000);
+    //udpSocketGet->bind(host, udpSocketSend->localPort());
+    udpSocketGet->bind(QHostAddress("127.0.0.1"), 16000);
+    connect(udpSocketGet,SIGNAL(readyRead()),this,SLOT(readUdpDatagrams()));
+
+    QByteArray datagram = makeNewDatagram(); // data from external function
+    udpSocketSend->write(datagram);
+}
+
+void graphs::readUdpDatagrams_by_PM()
+{
+    //p("Read Udp Datagrams");
+    while (udpSocketGet->hasPendingDatagrams()) {
+        QByteArray datagram;
+        datagram.resize(udpSocketGet->pendingDatagramSize());
+        QHostAddress sender;
+        quint16 senderPort;
+
+        udpSocketGet->readDatagram(datagram.data(), datagram.size(),
+                                &sender, &senderPort);
+
+        processUdpDatagram(datagram);
+        QHostAddress receivedAddress = sender;
+        ui->main_text_top->append("Получен пакет от ip " + receivedAddress.toString());
+
+        //parser->setAddress(receivedAddress);
+        ui->PARSER_LINE_PORT->setText(receivedAddress.);
+    }
+}
+
+void graphs::useCase_settings()
+{
+port = ui->lineEdit_clientPort;
+address = QHostAddress(ui->lineEdit_clientHost);
+}
+
+void graphs::useCase_window_testweb()
+{
+    //testweb->show();
+}
+
+void graphs::useCase_window_mainwindow()
+{
+    //mainwindow->show();
+}
+
+void graphs::useCase_window_parser()
+{
+    //parser->show();
+}
+
+void graphs::fsetAddress(const QHostAddress &addr)
+{
+    address = addr;
+}
+
+void graphs::fsetPort(const quint16 &prt)
+{
+    port = prt;
+}
+
+void graphs::useCase_send_ffff()
+{
+    if (address.isNull()) {
+        t("IP not set");
+        return;
+    }
+
+    QByteArray Mess;
+    int m = 0xffff;
+    Mess.append((char*)&m, sizeof(m));
+
+    //QString message = ui->textEdit_Result->toPlainText();
+
+    QString ip = address.toString();
+    //udpSocket.writeDatagram(message.toUtf8(), QHostAddress(ip), port);
+    // отправка пакета.
+    udpSocketSend->writeDatagram(Mess, address, port);
+}
+
+void graphs::useCase_send_0000()
+{
+    if (address.isNull()) {
+        t("IP not set");
+        return;
+    }
+    QByteArray Mess;
+    int m = 0x0000;
+    Mess.append((char*)&m, sizeof(m));
+
+    //QString message = ui->textEdit_Result->toPlainText();
+
+    QString ip = address.toString();
+    //udpSocket.writeDatagram(message.toUtf8(), QHostAddress(ip), port);
+    // отправка пакета.
+    udpSocketSend->writeDatagram(Mess, address, port);
+}
+
+void graphs::useCase_send_1111()
+{
+    if (address.isNull()) {
+        t("IP not set");
+        return;
+    }
+    QByteArray Mess;
+    int m = 0x1111;
+    Mess.append((char*)&m, sizeof(m));
+
+    //QString message = ui->textEdit_Result->toPlainText();
+
+    QString ip = address.toString();
+    //udpSocket.writeDatagram(message.toUtf8(), QHostAddress(ip), port);
+    // отправка пакета.
+    udpSocketSend->writeDatagram(Mess, address, port);
+}
+
+void graphs::useCase_send_aaaa()
+{
+    if (address.isNull()) {
+        t("IP not set");
+        return;
+    }
+    QByteArray Mess;
+    int m = 0xaaaa;
+    Mess.append((char*)&m, sizeof(m));
+
+    //QString message = ui->textEdit_Result->toPlainText();
+
+    QString ip = address.toString();
+
+    //udpSocket.writeDatagram(message.toUtf8(), QHostAddress(ip), port);
+    // отправка пакета.
+    udpSocketSend->writeDatagram(Mess, address, port);
+}
+
+
+void graphs::useCase_send_bbbb()
+{
+    if (address.isNull()) {
+        t("IP not set");
+        return;
+    }
+    QByteArray Mess;
+    int m = 0xbbbb;
+    Mess.append((char*)&m, sizeof(m));
+
+    //QString message = ui->textEdit_Result->toPlainText();
+
+    QString ip = address.toString();
+
+    //udpSocket.writeDatagram(message.toUtf8(), QHostAddress(ip), port);
+    // отправка пакета.
+    udpSocketSend->writeDatagram(Mess, address, port);
+}
+
+
+void graphs::usecase_OpenFile()
+{
+    QString fileName;
+
+            fileName = QFileDialog::getOpenFileName(this,
+                                QString::fromUtf8("Открыть файл"),
+                                QDir::currentPath(),
+                                "All files (*.*)");
+
+    QFile file(fileName);
+         if (!file.open(QIODevice::ReadOnly | QIODevice::Text))
+             return;
+
+         ui->main_text_bottom->clear();
+         QTextStream in(&file);
+         while (!in.atEnd()) {
+             QString line = in.readLine();
+             p(line);
+         }
+}
+
+void graphs::usecase_CheckScript()
+{
+    //parser->splitBlocks();
+}
+
+void graphs::usecase_SendScript()
+{
+    //parser->send();
 }
