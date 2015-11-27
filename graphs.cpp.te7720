@@ -25,7 +25,10 @@ void graphs::on_main_button_server_start_clicked()
     bindUdpPort();
 }
 
-
+void graphs::on_pushButton_5_clicked()
+{
+    //ui->tabWidget->addTab(new QWidget); // there are error
+}
 
 // Output:
 
@@ -477,109 +480,4 @@ void graphs::usecase_CheckScript()
 void graphs::usecase_SendScript()
 {
     //parser->send();
-}
-
-
-// Buttons:
-// Main Tab:
-
-void graphs::on_BTN_HELP_clicked()
-{
-
-}
-
-void graphs::on_BTN_OPEN_clicked()
-{
-
-}
-
-void graphs::on_BTN_TEST_clicked()
-{
-
-}
-
-void graphs::on_BTN_SEND_clicked()
-{
-
-}
-
-void graphs::on_BTN_START_clicked()
-{
-
-}
-
-void graphs::on_BTN_NEXT_clicked()
-{
-
-}
-
-void graphs::on_BTN_CANCEL_clicked()
-{
-
-}
-
-void graphs::on_BTN_PAUSE_clicked()
-{
-
-}
-
-void graphs::on_BTN_STOP_clicked()
-{
-
-}
-
-// Buttons Parser Tab:
-
-
-// Buttons Settings:
-
-
-// Buttons other:
-
-
-// Buttons Plots Tab:
-
-
-
-void graphs::on_PARSER_BUTTON_COMPILE_clicked()
-{
-
-}
-
-void graphs::on_PARSER_BUTTON_split_clicked()
-{
-
-}
-
-void graphs::on_PARSER_BUTTON_X_clicked()
-{
-
-}
-
-void graphs::on_PARSER_BUTTON_SEND_clicked()
-{
-
-}
-
-
-// CLIENT BUTTONS:
-
-void graphs::on_clientAdd_clicked()
-{
-
-}
-
-void graphs::on_pushButton_minus_clicked()
-{
-
-}
-
-void graphs::on_pushButton_plus_clicked()
-{
-
-}
-
-void graphs::on_client_ButtonSend_clicked()
-{
-
 }

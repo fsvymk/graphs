@@ -85,4 +85,3 @@ static entry deserialize(QByteArray* source){
 }
 
 #endif // ENTRY
-
