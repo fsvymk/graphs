@@ -21,7 +21,7 @@
        <bool>true</bool>
       </property>
       <property name="currentIndex">
-       <number>0</number>
+       <number>1</number>
       </property>
       <widget class="QWidget" name="tab">
        <attribute name="title">
@@ -138,8 +138,18 @@
         <string>Graphs</string>
        </attribute>
        <layout class="QGridLayout" name="gridLayout_3">
-        <item row="0" column="0">
+        <item row="1" column="1">
+         <widget class="QSlider" name="verticalSlider">
+          <property name="orientation">
+           <enum>Qt::Vertical</enum>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="0">
          <widget class="QCustomPlot" name="widget" native="true"/>
+        </item>
+        <item row="0" column="0">
+         <widget class="QLineEdit" name="lineEdit"/>
         </item>
        </layout>
       </widget>
@@ -483,25 +493,12 @@ Block block_name_A
          <string>CLIENT</string>
         </property>
        </widget>
-       <widget class="QLineEdit" name="lineEdit_clientPort">
-        <property name="geometry">
-         <rect>
-          <x>332</x>
-          <y>90</y>
-          <width>51</width>
-          <height>21</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>16001</string>
-        </property>
-       </widget>
        <widget class="QLineEdit" name="lineEdit_clientHost">
         <property name="geometry">
          <rect>
-          <x>182</x>
-          <y>90</y>
-          <width>141</width>
+          <x>230</x>
+          <y>60</y>
+          <width>151</width>
           <height>21</height>
          </rect>
         </property>
@@ -535,184 +532,19 @@ Block block_name_A
          <string>Client Port</string>
         </property>
        </widget>
-      </widget>
-      <widget class="QWidget" name="tab_5">
-       <attribute name="title">
-        <string>Client</string>
-       </attribute>
-       <layout class="QGridLayout" name="gridLayout_4">
-        <item row="1" column="0">
-         <widget class="QLineEdit" name="client_lineEdit_numplot">
-          <property name="text">
-           <string>1</string>
-          </property>
-         </widget>
-        </item>
-        <item row="9" column="2" colspan="6">
-         <widget class="QLineEdit" name="client_lineEdit_ip">
-          <property name="text">
-           <string>127.0.0.1</string>
-          </property>
-         </widget>
-        </item>
-        <item row="7" column="6" colspan="3">
-         <widget class="QPushButton" name="pushButton_plus">
-          <property name="text">
-           <string>+</string>
-          </property>
-         </widget>
-        </item>
-        <item row="5" column="2" colspan="5">
-         <widget class="QLabel" name="label_howmuch">
-          <property name="text">
-           <string>How much points</string>
-          </property>
-         </widget>
-        </item>
-        <item row="4" column="2" colspan="6">
-         <widget class="QRadioButton" name="radioButton_random">
-          <property name="text">
-           <string>random</string>
-          </property>
-          <property name="checked">
-           <bool>true</bool>
-          </property>
-         </widget>
-        </item>
-        <item row="3" column="2" colspan="2">
-         <widget class="QRadioButton" name="radioButton_fence">
-          <property name="text">
-           <string>fence</string>
-          </property>
-         </widget>
-        </item>
-        <item row="3" column="0" rowspan="11" colspan="2">
-         <widget class="QListWidget" name="client_listWidget">
-          <property name="maximumSize">
-           <size>
-            <width>140</width>
-            <height>16777215</height>
-           </size>
-          </property>
-          <property name="inputMethodHints">
-           <set>Qt::ImhMultiLine</set>
-          </property>
-         </widget>
-        </item>
-        <item row="1" column="9" rowspan="13">
-         <widget class="QTextEdit" name="client_debug"/>
-        </item>
-        <item row="1" column="2" colspan="2">
-         <widget class="QRadioButton" name="radioButton_sinus">
-          <property name="text">
-           <string>sinus</string>
-          </property>
-          <property name="checked">
-           <bool>false</bool>
-          </property>
-         </widget>
-        </item>
-        <item row="0" column="9">
-         <widget class="QLabel" name="client_label_debug">
-          <property name="text">
-           <string>Debug</string>
-          </property>
-         </widget>
-        </item>
-        <item row="0" column="0" colspan="2">
-         <widget class="QLabel" name="label_units">
-          <property name="text">
-           <string>Units. (plots in server side)</string>
-          </property>
-         </widget>
-        </item>
-        <item row="7" column="2" colspan="4">
-         <widget class="QPushButton" name="pushButton_minus">
-          <property name="text">
-           <string>-</string>
-          </property>
-         </widget>
-        </item>
-        <item row="6" column="2" colspan="7">
-         <widget class="QLineEdit" name="lineEdit_points">
-          <property name="inputMethodHints">
-           <set>Qt::ImhDigitsOnly</set>
-          </property>
-          <property name="text">
-           <string>20</string>
-          </property>
-         </widget>
-        </item>
-        <item row="8" column="2" colspan="7">
-         <widget class="QLabel" name="label_hostport">
-          <property name="text">
-           <string>Host                                 Port</string>
-          </property>
-         </widget>
-        </item>
-        <item row="11" column="8">
-         <widget class="QLineEdit" name="client_lineEdit_xto">
-          <property name="text">
-           <string>100</string>
-          </property>
-         </widget>
-        </item>
-        <item row="10" column="2" colspan="3">
-         <widget class="QLabel" name="client_label_7">
-          <property name="text">
-           <string>Timstamp</string>
-          </property>
-         </widget>
-        </item>
-        <item row="13" column="2" colspan="7">
-         <widget class="QListView" name="client_listView"/>
-        </item>
-        <item row="11" column="7">
-         <widget class="QLabel" name="client_label_3">
-          <property name="text">
-           <string>-</string>
-          </property>
-         </widget>
-        </item>
-        <item row="12" column="2" colspan="7">
-         <widget class="QPushButton" name="client_ButtonSend">
-          <property name="text">
-           <string>Send</string>
-          </property>
-         </widget>
-        </item>
-        <item row="10" column="5" colspan="4">
-         <widget class="QLineEdit" name="client_line_timestamp"/>
-        </item>
-        <item row="11" column="3" colspan="4">
-         <widget class="QLineEdit" name="client_lineEdit_xfrom">
-          <property name="text">
-           <string>0</string>
-          </property>
-         </widget>
-        </item>
-        <item row="9" column="8">
-         <widget class="QLineEdit" name="client_lineEdit_port">
-          <property name="text">
-           <string>16000</string>
-          </property>
-         </widget>
-        </item>
-        <item row="11" column="2">
-         <widget class="QLabel" name="client_label_xrange">
-          <property name="text">
-           <string>X range:</string>
-          </property>
-         </widget>
-        </item>
-        <item row="2" column="0">
-         <widget class="QPushButton" name="clientAdd">
-          <property name="text">
-           <string>add</string>
-          </property>
-         </widget>
-        </item>
-       </layout>
+       <widget class="QPushButton" name="btn_SettingsSave">
+        <property name="geometry">
+         <rect>
+          <x>390</x>
+          <y>20</y>
+          <width>80</width>
+          <height>41</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Save</string>
+        </property>
+       </widget>
       </widget>
      </widget>
     </item>

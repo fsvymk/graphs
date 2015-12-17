@@ -123,6 +123,14 @@ private slots:
     void        useCase_parser_pushTestFile();
     void        parse();
     void        usecase_parser_clear();
+    void on_lineEdit_bind_textChanged(const QString &arg1);
+
+    void on_line_clientPort_textChanged(const QString &arg1);
+
+    void on_btn_SettingsSave_clicked();
+
+    void on_verticalSlider_valueChanged(int value);
+
 private:
     Ui::graphs *ui;
 
@@ -139,11 +147,10 @@ private:
     QCustomPlot* plots;
     QVBoxLayout* vbox;
 
-    // four.cpp
-    QHostAddress address;
-    quint16 port;
-
+    // Settings
+    QHostAddress address; // client addr.
     quint16 clientPort;
+    quint16 port;        //server port
 
 
     // Parser

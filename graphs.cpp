@@ -3,7 +3,7 @@
 #include <QUdpSocket>
 #include <QtMath>
 #include <QMap>
-
+#include <testweb.h>
 #include <qcustomplot.h>
 
 graphs::graphs(QWidget *parent) :
@@ -30,7 +30,7 @@ void graphs::on_main_button_server_start_clicked()
 
 void graphs::on_BTN_HELP_clicked()
 {
-
+    useCase_help();
 }
 
 void graphs::on_BTN_OPEN_clicked()
@@ -168,7 +168,9 @@ void graphs::init(){
     vbox    = (QVBoxLayout*)ui->widget->layout();
 
     address    = QHostAddress(ui->lineEdit_clientHost->text());
-    clientPort = ui->lineEdit_clientPort->text().toInt();
+    clientPort = ui->line_clientPort->text().toInt();
+
+    ui->btn_SettingsSave->setDisabled(true);
 }
 
 void graphs::delete_graphs(QVBoxLayout* plotsLayout)
@@ -243,7 +245,7 @@ void graphs::entryMassDeserialize(QByteArray* source,
         prettyTool >> result.x >> result.y >> result.t >> result.v >> result.z >> result.n;
         //p(entryToString(result));
         DB->insert(result.t, result);
-        double x = result.x/1000.0;//
+        double x = result.x/1000.0;
         double y = result.y;
 
         quint16 T = result.t;
@@ -278,8 +280,9 @@ void graphs::entryMassDeserialize(QByteArray* source,
     for(i=0; i<graphT.size(); i++){
         plots[i].replot();
         // удаление лишних данных
-        quint32 current = QDateTime::currentMSecsSinceEpoch();
-        //plots[i].graph(0)->removeDataBefore(current-10000);
+        //quint32 current = QDateTime::currentMSecsSinceEpoch();
+        quint32 current = QTime::currentTime().msecsSinceStartOfDay();
+        plots[i].graph(0)->removeDataBefore(current-shownSize);
 
         plots[i].xAxis->rescale();
         plots[i].yAxis->rescale();
@@ -361,9 +364,9 @@ void graphs::useCase_mainwindow()
 
 void graphs::useCase_help()
 {
-    //Testweb *help = new Testweb();
-    //help->show();
-   //help->setGeometry(20,60,760,540);
+    Testweb *help = new Testweb();
+    help->show();
+    help->setGeometry(20, 60, 760, 540);
 }
 
 void graphs::setNonEditMode( QWidget& Widget , bool bNonEditMode )
@@ -411,9 +414,9 @@ void graphs::oprosb()
     QHostAddress host("192.168.1.101");
     QHostAddress bcast("192.168.1.255");
 
-    udpSocketSend.connectToHost(bcast,16000);
+    udpSocketSend.connectToHost(bcast, clientPort);
     //udpSocketGet->bind(host, udpSocketSend->localPort());
-    udpSocketGet.bind(QHostAddress("127.0.0.1"), 16000);
+    udpSocketGet.bind(address, clientPort);
     connect(&udpSocketGet,SIGNAL(readyRead()),this,SLOT(readUdpDatagrams()));
 
     QByteArray datagram = makeNewDatagram(); // data from external function
@@ -443,8 +446,9 @@ void graphs::readUdpDatagrams_by_PM()
 
 void graphs::useCase_settings()
 {
-port = ui->lineEdit_clientPort->text().toInt();
-address = QHostAddress(ui->lineEdit_clientHost->text());
+    port    = ui->line_clientPort->text().toInt();
+    address = QHostAddress(ui->lineEdit_clientHost->text());
+    clientPort = ui->line_clientPort->text().toInt();
 }
 
 void graphs::useCase_window_testweb()
@@ -486,7 +490,7 @@ void graphs::useCase_send_ffff()
     t(ip + " " + clientPort);
     //udpSocket.writeDatagram(message.toUtf8(), QHostAddress(ip), port);
     // отправка пакета.
-    udpSocketSend.writeDatagram(Mess, address, 16001);
+    udpSocketSend.writeDatagram(Mess, address, clientPort);
 }
 
 void graphs::useCase_send_0000()
@@ -504,7 +508,7 @@ void graphs::useCase_send_0000()
     QString ip = address.toString();
     //udpSocket.writeDatagram(message.toUtf8(), QHostAddress(ip), port);
     // отправка пакета.
-    udpSocketSend.writeDatagram(Mess, address, 16001);
+    udpSocketSend.writeDatagram(Mess, address, clientPort);
 }
 
 void graphs::useCase_send_1111()
@@ -522,7 +526,7 @@ void graphs::useCase_send_1111()
     QString ip = address.toString();
     //udpSocket.writeDatagram(message.toUtf8(), QHostAddress(ip), port);
     // отправка пакета.
-    udpSocketSend.writeDatagram(Mess, address, 16001);
+    udpSocketSend.writeDatagram(Mess, address, clientPort);
 }
 
 void graphs::useCase_send_aaaa()
@@ -541,7 +545,7 @@ void graphs::useCase_send_aaaa()
 
     //udpSocket.writeDatagram(message.toUtf8(), QHostAddress(ip), port);
     // отправка пакета.
-    udpSocketSend.writeDatagram(Mess, address, 16001);
+    udpSocketSend.writeDatagram(Mess, address, clientPort);
 }
 
 
@@ -561,7 +565,7 @@ void graphs::useCase_send_bbbb()
 
     //udpSocket.writeDatagram(message.toUtf8(), QHostAddress(ip), port);
     // отправка пакета.
-    udpSocketSend.writeDatagram(Mess, address, 16001);
+    udpSocketSend.writeDatagram(Mess, address, clientPort);
 }
 
 
@@ -1413,4 +1417,30 @@ void graphs::useCase_parser_pushTestFile()
         file.close();
     }
 
+}
+
+void graphs::on_lineEdit_bind_textChanged(const QString &arg1)
+{
+    ui->main_text_top->append("Server port = " + arg1);
+    ui->btn_SettingsSave->setEnabled(true);
+}
+
+void graphs::on_line_clientPort_textChanged(const QString &arg1)
+{
+    ui->btn_SettingsSave->setEnabled(true);
+    ui->main_text_top->append("Client port = " + arg1);
+}
+
+void graphs::on_btn_SettingsSave_clicked()
+{
+    address = QHostAddress(ui->lineEdit_clientHost->text());
+    port =  ui->lineEdit_bind->text().toInt();
+    clientPort =ui->line_clientPort->text().toInt();
+
+    ui->btn_SettingsSave->setDisabled(true);
+}
+
+void graphs::on_verticalSlider_valueChanged(int value)
+{
+    ui->lineEdit->setText(ss(value));
 }
