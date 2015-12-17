@@ -243,7 +243,7 @@ void graphs::entryMassDeserialize(QByteArray* source,
         prettyTool >> result.x >> result.y >> result.t >> result.v >> result.z >> result.n;
         //p(entryToString(result));
         DB->insert(result.t, result);
-        double x = result.x;
+        double x = result.x/1000.0;//
         double y = result.y;
 
         quint16 T = result.t;
@@ -279,7 +279,7 @@ void graphs::entryMassDeserialize(QByteArray* source,
         plots[i].replot();
         // удаление лишних данных
         quint32 current = QDateTime::currentMSecsSinceEpoch();
-        plots[i].graph(0)->removeDataBefore(current-10000);
+        //plots[i].graph(0)->removeDataBefore(current-10000);
 
         plots[i].xAxis->rescale();
         plots[i].yAxis->rescale();
