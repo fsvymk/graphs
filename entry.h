@@ -35,13 +35,17 @@ static QString ss(int str){
 
 static QString toString(entry s){
         QString result;
+        QStringList resultDescr;
+        resultDescr << "Не определено." << "Успешно." << "Не успешно." << "аварийный стоп.";
+        QString rd = "";
+        if(s.n > 0 && s.n<4) rd = resultDescr[s.n];
 
         result.append(QString::number(s.t) + " " +
                       QString::number(s.v) + " " +
                       QString::number(s.x) + " " +
                       QString::number(s.y) + " " +
                       QString::number(s.z) + " " +
-                      QString::number(s.n));
+                      QString::number(s.n)) + " " + rd;
 
         return result;
 }

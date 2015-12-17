@@ -21,7 +21,7 @@
        <bool>true</bool>
       </property>
       <property name="currentIndex">
-       <number>2</number>
+       <number>0</number>
       </property>
       <widget class="QWidget" name="tab">
        <attribute name="title">
@@ -399,8 +399,8 @@ Block block_name_A
             <rect>
              <x>0</x>
              <y>0</y>
-             <width>733</width>
-             <height>346</height>
+             <width>164</width>
+             <height>107</height>
             </rect>
            </property>
            <attribute name="label">
@@ -454,7 +454,7 @@ Block block_name_A
          </rect>
         </property>
         <property name="text">
-         <string>Bind UDP port :</string>
+         <string>Server UDP port :</string>
         </property>
        </widget>
        <widget class="QLineEdit" name="lineEdit_bind">
@@ -474,7 +474,7 @@ Block block_name_A
         <property name="geometry">
          <rect>
           <x>180</x>
-          <y>60</y>
+          <y>70</y>
           <width>47</width>
           <height>13</height>
          </rect>
@@ -487,26 +487,52 @@ Block block_name_A
         <property name="geometry">
          <rect>
           <x>332</x>
-          <y>80</y>
+          <y>90</y>
           <width>51</width>
           <height>21</height>
          </rect>
         </property>
         <property name="text">
-         <string>16000</string>
+         <string>16001</string>
         </property>
        </widget>
        <widget class="QLineEdit" name="lineEdit_clientHost">
         <property name="geometry">
          <rect>
           <x>182</x>
-          <y>80</y>
+          <y>90</y>
           <width>141</width>
           <height>21</height>
          </rect>
         </property>
         <property name="text">
          <string>127.0.0.1</string>
+        </property>
+       </widget>
+       <widget class="QLineEdit" name="line_clientPort">
+        <property name="geometry">
+         <rect>
+          <x>270</x>
+          <y>40</y>
+          <width>113</width>
+          <height>21</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>16001</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label">
+        <property name="geometry">
+         <rect>
+          <x>190</x>
+          <y>40</y>
+          <width>71</width>
+          <height>16</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Client Port</string>
         </property>
        </widget>
       </widget>

@@ -89,6 +89,40 @@ private slots:
     void on_pushButton_plus_clicked();
     void on_client_ButtonSend_clicked();
 
+    //PARSER
+
+    void 		splitBlocks();
+    void 		send();
+    bool 		parseSem(QXmlStreamReader &xml, QMap<QString, int> &sems);
+    void 		displaySems(QMap<QString, int> &sems);
+    void 		fetchSems(QString FileName, QMap<QString, int> &sems);
+    void 		QStringList_print(QStringList list);
+    void  		rr(QString str);
+    void  		bb(QByteArray str);
+    void 		tt(QString str);
+    void  		rb(QString str);
+    bool 		checkCommand(QString Command, int line);
+    bool 		checkControlBy(QString ControlBy);
+    bool 		checkOptions(QString Options);
+    QString 	GetCodeBetweenBrackets(QString str, QString regular_expression);
+    QStringList TrueThreeParts(QString step, int line);
+    QStringList Command_ControlBy_Options(QString step, int line);
+    void 		parseBlock(QString Block, QMap<QString,int> &sems, int line);
+    void 		parseFragment(QString text, int StepN, const QMap<QString, int> &sems, int line);
+    QByteArray 	parseLine(const QString &text, const QMap<QString, int> &sems, int line);
+    QByteArray 	processScript(QString value, QStringList numbers, const QMap<QString, int> &sems, int line);
+    int 		whatLine(QString text, int position);
+    void 		temporary_green();
+    void 		saveLogs();
+
+
+    void        usecase_parser_send();
+    void        useCase_parser_Save();
+
+    void        useCase_parserOpen();
+    void        useCase_parser_pushTestFile();
+    void        parse();
+    void        usecase_parser_clear();
 private:
     Ui::graphs *ui;
 
@@ -96,8 +130,8 @@ private:
     int graphCount;
     QUdpSocket udpSocket;
     QUdpSocket udpServerSocket;
-    QUdpSocket *udpSocketSend;
-    QUdpSocket *udpSocketGet;
+    QUdpSocket udpSocketSend;
+    QUdpSocket udpSocketGet;
     QList<unsigned> graphT;
     QHash<unsigned, struct entry> db;
     quint32 datagramCounter;
@@ -108,6 +142,19 @@ private:
     // four.cpp
     QHostAddress address;
     quint16 port;
+
+    quint16 clientPort;
+
+
+    // Parser
+    static const int LineSize = 32;
+    QStringList BlockNames;
+    QStringList Blocks;
+    QByteArray globalResult;
+    int __CommandLine;
+    int __ControlByLine;
+    int __OptionsLine;
+    int globalStepNumber;
 };
 
 #endif // GRAPHS_H
