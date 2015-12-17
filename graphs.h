@@ -41,6 +41,8 @@ private slots:
     void clear_plots(QCustomPlot* pl);
     void bindUdpPort();
 
+    void setNormalZoom();
+    void saveSettings();
     void on_main_button_server_start_clicked();
 
     //four.h
@@ -132,6 +134,8 @@ private slots:
     void on_verticalSlider_valueChanged(int value);
 
     void on_verticalSlider_actionTriggered(int action);
+
+    void on_pushButton_clicked();
 
 private:
     Ui::graphs *ui;

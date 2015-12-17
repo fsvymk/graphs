@@ -233,6 +233,15 @@ void graphs::readUdpDatagrams()
     }
 }
 
+void graphs::setNormalZoom(){
+    int i;
+    for(i=0;i<graphCount;i++){
+        plots[i].xAxis->rescale();
+        plots[i].yAxis->rescale();
+        plots[i].replot();
+    }
+}
+
 // from PLOT-DEMO
 void graphs::entryMassDeserialize(QByteArray* source,
                                     QHash<unsigned, struct entry>* DB){
@@ -271,9 +280,8 @@ void graphs::entryMassDeserialize(QByteArray* source,
 
             plots[plotRow].xAxis->setTickLabelType(QCPAxis::ltDateTime);
             plots[plotRow].xAxis->setDateTimeFormat("hh:mm:ss");
-            //plots[plotRow].xAxis->setAutoTickStep(false);
-            //plots[plotRow].xAxis->setTickStep(2);
-            //plots[plotRow].axisRect()->setupFullAxesBox();
+            plots[plotRow].axisRect()->setupFullAxesBox(true);
+            plots[plotRow].setInteractions(QCP::iRangeDrag | QCP::iRangeZoom);
 
         }
         plots[plotRow].graph(0)->addData(x, y);  // 0 - потому что других там графиков не должно быть
@@ -1441,7 +1449,7 @@ void graphs::on_btn_SettingsSave_clicked()
     address = QHostAddress(ui->lineEdit_clientHost->text());
     port =  ui->lineEdit_bind->text().toInt();
     clientPort =ui->line_clientPort->text().toInt();
-    ui->PARSER_LINE_PORT->setText(ui->lineEdit_bind->text());
+    ui->PARSER_LINE_PORT->setText(ui->line_clientPort->text());
     ui->PARSER_LINE_IP->setText(ui->lineEdit_clientHost->text());
 
     saveSettings();
@@ -1452,10 +1460,15 @@ void graphs::on_btn_SettingsSave_clicked()
 void graphs::on_verticalSlider_valueChanged(int value)
 {
     shownSize = 100 * (value + 10);
-    ui->lineEdit->setText(ss(shownSize));
+   // ui->lineEdit->setText(ss(shownSize));
 }
 
 void graphs::on_verticalSlider_actionTriggered(int action)
 {
 
+}
+
+void graphs::on_pushButton_clicked()
+{
+    setNormalZoom();
 }

@@ -15,13 +15,13 @@
   </property>
   <widget class="QWidget" name="centralWidget">
    <layout class="QGridLayout" name="gridLayout">
-    <item row="0" column="0">
+    <item row="0" column="1">
      <widget class="QTabWidget" name="tabWidget">
       <property name="autoFillBackground">
        <bool>true</bool>
       </property>
       <property name="currentIndex">
-       <number>3</number>
+       <number>1</number>
       </property>
       <widget class="QWidget" name="tab">
        <attribute name="title">
@@ -145,18 +145,17 @@
         <string>Graphs</string>
        </attribute>
        <layout class="QGridLayout" name="gridLayout_3">
-        <item row="1" column="1">
-         <widget class="QSlider" name="verticalSlider">
-          <property name="orientation">
-           <enum>Qt::Vertical</enum>
-          </property>
+        <item row="1" column="0">
+         <widget class="QCustomPlot" name="widget" native="true">
+          <zorder>toolButton</zorder>
          </widget>
         </item>
-        <item row="1" column="0">
-         <widget class="QCustomPlot" name="widget" native="true"/>
-        </item>
         <item row="0" column="0">
-         <widget class="QLineEdit" name="lineEdit"/>
+         <widget class="QPushButton" name="pushButton">
+          <property name="text">
+           <string>Restore</string>
+          </property>
+         </widget>
         </item>
        </layout>
       </widget>
@@ -496,8 +495,8 @@ Block block_name_A
        <widget class="QLabel" name="label_client">
         <property name="geometry">
          <rect>
-          <x>180</x>
-          <y>70</y>
+          <x>190</x>
+          <y>40</y>
           <width>47</width>
           <height>13</height>
          </rect>
@@ -509,9 +508,9 @@ Block block_name_A
        <widget class="QLineEdit" name="lineEdit_clientHost">
         <property name="geometry">
          <rect>
-          <x>230</x>
+          <x>180</x>
           <y>60</y>
-          <width>151</width>
+          <width>131</width>
           <height>21</height>
          </rect>
         </property>
@@ -522,9 +521,9 @@ Block block_name_A
        <widget class="QLineEdit" name="line_clientPort">
         <property name="geometry">
          <rect>
-          <x>270</x>
-          <y>40</y>
-          <width>113</width>
+          <x>330</x>
+          <y>60</y>
+          <width>51</width>
           <height>21</height>
          </rect>
         </property>
@@ -535,7 +534,7 @@ Block block_name_A
        <widget class="QLabel" name="label">
         <property name="geometry">
          <rect>
-          <x>190</x>
+          <x>310</x>
           <y>40</y>
           <width>71</width>
           <height>16</height>
@@ -551,12 +550,730 @@ Block block_name_A
           <x>390</x>
           <y>20</y>
           <width>80</width>
-          <height>41</height>
+          <height>61</height>
          </rect>
         </property>
         <property name="text">
          <string>Save</string>
         </property>
+       </widget>
+       <widget class="QLineEdit" name="line_settingsViewSize">
+        <property name="geometry">
+         <rect>
+          <x>350</x>
+          <y>100</y>
+          <width>71</width>
+          <height>21</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>4</string>
+        </property>
+       </widget>
+       <widget class="QLineEdit" name="line_settingsStorageSize">
+        <property name="geometry">
+         <rect>
+          <x>350</x>
+          <y>120</y>
+          <width>71</width>
+          <height>21</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>86400</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_2">
+        <property name="geometry">
+         <rect>
+          <x>170</x>
+          <y>100</y>
+          <width>181</width>
+          <height>20</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Отображать данные за последние</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_3">
+        <property name="geometry">
+         <rect>
+          <x>430</x>
+          <y>100</y>
+          <width>31</width>
+          <height>16</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>с.</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_4">
+        <property name="geometry">
+         <rect>
+          <x>200</x>
+          <y>120</y>
+          <width>181</width>
+          <height>16</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Хранить данные для зума за </string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_5">
+        <property name="geometry">
+         <rect>
+          <x>430</x>
+          <y>120</y>
+          <width>31</width>
+          <height>16</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>с.</string>
+        </property>
+       </widget>
+       <widget class="QTabWidget" name="tabWidget_2">
+        <property name="geometry">
+         <rect>
+          <x>0</x>
+          <y>-30</y>
+          <width>755</width>
+          <height>445</height>
+         </rect>
+        </property>
+        <property name="autoFillBackground">
+         <bool>true</bool>
+        </property>
+        <property name="currentIndex">
+         <number>3</number>
+        </property>
+        <widget class="QWidget" name="tab_5">
+         <attribute name="title">
+          <string>Main</string>
+         </attribute>
+         <layout class="QGridLayout" name="gridLayout_4">
+          <item row="0" column="3">
+           <widget class="QLineEdit" name="line_maxdata_2">
+            <property name="maximumSize">
+             <size>
+              <width>60</width>
+              <height>16777215</height>
+             </size>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="8" colspan="2">
+           <widget class="QPushButton" name="BTN_SEND_2">
+            <property name="text">
+             <string>Отправить</string>
+            </property>
+           </widget>
+          </item>
+          <item row="3" column="7" colspan="2">
+           <widget class="QPushButton" name="BTN_PAUSE_2">
+            <property name="text">
+             <string>Пауза</string>
+            </property>
+           </widget>
+          </item>
+          <item row="3" column="5" colspan="2">
+           <widget class="QPushButton" name="BTN_CANCEL_2">
+            <property name="text">
+             <string>Отмена</string>
+            </property>
+           </widget>
+          </item>
+          <item row="3" column="9">
+           <widget class="QPushButton" name="BTN_STOP_2">
+            <property name="text">
+             <string>Стоп</string>
+            </property>
+           </widget>
+          </item>
+          <item row="3" column="0" colspan="3">
+           <widget class="QPushButton" name="BTN_START_2">
+            <property name="text">
+             <string>Старт</string>
+            </property>
+           </widget>
+          </item>
+          <item row="3" column="3" colspan="2">
+           <widget class="QPushButton" name="BTN_NEXT_2">
+            <property name="text">
+             <string>Далее</string>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="0" colspan="10">
+           <widget class="QTextEdit" name="main_text_bottom_2">
+            <property name="readOnly">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="0" colspan="10">
+           <widget class="QTextEdit" name="main_text_top_2">
+            <property name="maximumSize">
+             <size>
+              <width>16777215</width>
+              <height>80</height>
+             </size>
+            </property>
+            <property name="readOnly">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="0">
+           <widget class="QPushButton" name="BTN_HELP_2">
+            <property name="text">
+             <string>Справка</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="6" colspan="2">
+           <widget class="QPushButton" name="BTN_TEST_2">
+            <property name="text">
+             <string>Проверить</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="4" colspan="2">
+           <widget class="QPushButton" name="BTN_OPEN_2">
+            <property name="text">
+             <string>Открыть</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="2">
+           <widget class="QLineEdit" name="line_datagrams_2">
+            <property name="maximumSize">
+             <size>
+              <width>70</width>
+              <height>16777215</height>
+             </size>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="1">
+           <widget class="QPushButton" name="main_button_server_start_2">
+            <property name="text">
+             <string>Start Server</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+        <widget class="QWidget" name="tab_6">
+         <attribute name="title">
+          <string>Graphs</string>
+         </attribute>
+         <layout class="QGridLayout" name="gridLayout_8">
+          <item row="1" column="1">
+           <widget class="QSlider" name="verticalSlider_2">
+            <property name="orientation">
+             <enum>Qt::Vertical</enum>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="0">
+           <widget class="QCustomPlot" name="widget_2" native="true"/>
+          </item>
+          <item row="0" column="0">
+           <widget class="QLineEdit" name="lineEdit_2"/>
+          </item>
+         </layout>
+        </widget>
+        <widget class="QWidget" name="tab_7">
+         <attribute name="title">
+          <string>Parser</string>
+         </attribute>
+         <layout class="QGridLayout" name="gridLayout_9">
+          <item row="0" column="1">
+           <widget class="QToolBox" name="toolBox_2">
+            <property name="currentIndex">
+             <number>0</number>
+            </property>
+            <widget class="QWidget" name="page_3">
+             <property name="geometry">
+              <rect>
+               <x>0</x>
+               <y>0</y>
+               <width>466</width>
+               <height>116</height>
+              </rect>
+             </property>
+             <attribute name="label">
+              <string>Main</string>
+             </attribute>
+             <layout class="QGridLayout" name="gridLayout_10">
+              <item row="8" column="0" colspan="9">
+               <widget class="CodeEditor" name="parser_codeEditor_2">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
+                <property name="plainText">
+                 <string>Block block_name
+{
+	step1 
+	{
+		command command_name(param1=n, param2=m,paramn=s)
+		Control_by()
+		{
+			step1 (end = 'yes')
+			Calibr (result  = 'true')
+		}
+		Options()
+		{ 
+			scanner (port  = 'port_name')
+			Call (step = 4)
+			On_end(step = '6' )
+		}
+	}
+	
+	Step2 
+	{
+		command command_name(param1=n, param2=m,paramn=s)
+		Control_by()
+		{
+			step1 (end = 'yes')
+			Calibr (result  = 'true')
+		}
+		Options()
+		{ 
+			scanner (port  = 'port_name')
+			Call (step = 4)
+			On_end(step = '6' )
+		}
+	}
+	
+	step7 
+	{
+		command command_name(param1=n, param2=m,paramn=s)
+		Control_by()
+		{
+			step1 (end = 'yes')
+			Calibr (result  = 'true')
+		}
+		Options()
+		{ 
+			scanner (port  = 'port_name')
+			Call (step = 4)
+			On_end(step = '6' )
+		}
+	}
+}
+
+Block block_name_B
+{
+	step8 
+	{
+		command command_name(param1=n, param2=m,paramn=s)
+		Control_by()
+		{
+			step1 (end = 'yes')
+			Calibr (result  = 'true')
+		}
+		Options()
+		{ 
+			scanner (port  = 'port_name')
+			Call (step = 4)
+			On_end(step = '6' )
+		}
+	}
+	
+	Step5 
+	{
+		command command_name(param1=n, param2=m, paramn=s)
+		Control_by()
+		{
+			step1 (end = 'yes')
+			Calibr (result  = 'true')
+		}
+		Options()
+		{ 
+			scanner (port  = 'port_name')
+			Call (step = 4)
+			On_end(step = '6')
+		}
+	}
+	
+	step4 
+	{
+		command command_name(param1=n, param2=m,paramn=s)
+		Control_by()
+		{
+			step1 (end = 'yes')
+			Calibr (result  = 'true')
+		}
+		Options()
+		{ 
+			scanner (port  = 'port_name')
+			Call (step = 4)
+			On_end(step = '6' )
+		}
+	}
+}
+
+Block block_name_A
+{
+	step34 
+	{
+		command command_name(param1=n, param2=m,paramn=s)
+		Control_by()
+		{
+			step1 (end = 'yes')
+			Calibr (result  = 'true')
+		}
+		Options()
+		{ 
+			scanner (port  = 'port_name')
+			Call (step = 4)
+			On_end(step = '6' )
+		}
+	}
+	
+	Step64 
+	{
+		command command_name(param1=n, param2=m,paramn=s)
+		Control_by()
+		{
+			step1 (end = 'yes')
+			Calibr (result  = 'true')
+		}
+		Options()
+		{ 
+			scanner (port  = 'port_name')
+			Call (step = 4)
+			On_end(step = '6' )
+		}
+	}
+	
+	step23 
+	{
+		command command_name(param1=n, param2=m,paramn=s)
+		Control_by()
+		{
+			step1 (end = 'yes')
+			Calibr (result  = 'true')
+		}
+		Options()
+		{ 
+			scanner (port  = 'port_name')
+			Call (step = 4)
+			On_end(step = 6)
+		}
+	}
+}</string>
+                </property>
+               </widget>
+              </item>
+              <item row="3" column="3">
+               <widget class="QPushButton" name="PARSER_BUTTON_SEND_2">
+                <property name="text">
+                 <string>SEND</string>
+                </property>
+               </widget>
+              </item>
+              <item row="3" column="0">
+               <widget class="QPushButton" name="PARSER_BUTTON_COMPILE_2">
+                <property name="text">
+                 <string>COMPILE</string>
+                </property>
+               </widget>
+              </item>
+              <item row="3" column="4">
+               <widget class="QLabel" name="PARSER_LABEL_IP_2">
+                <property name="text">
+                 <string>IP</string>
+                </property>
+               </widget>
+              </item>
+              <item row="3" column="7">
+               <widget class="QLineEdit" name="PARSER_LINE_PORT_2">
+                <property name="maximumSize">
+                 <size>
+                  <width>50</width>
+                  <height>16777215</height>
+                 </size>
+                </property>
+                <property name="readOnly">
+                 <bool>true</bool>
+                </property>
+               </widget>
+              </item>
+              <item row="3" column="1">
+               <widget class="QPushButton" name="PARSER_BUTTON_split_2">
+                <property name="text">
+                 <string>SPLIT BLOCKS</string>
+                </property>
+               </widget>
+              </item>
+              <item row="3" column="5">
+               <widget class="QLineEdit" name="PARSER_LINE_IP_2">
+                <property name="maximumSize">
+                 <size>
+                  <width>140</width>
+                  <height>16777215</height>
+                 </size>
+                </property>
+                <property name="readOnly">
+                 <bool>true</bool>
+                </property>
+               </widget>
+              </item>
+              <item row="3" column="2">
+               <widget class="QPushButton" name="PARSER_BUTTON_X_2">
+                <property name="text">
+                 <string>X</string>
+                </property>
+               </widget>
+              </item>
+              <item row="3" column="6">
+               <widget class="QLabel" name="PARSER_LABEL_PORT_2">
+                <property name="text">
+                 <string>Port</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+            <widget class="QWidget" name="page_4">
+             <property name="geometry">
+              <rect>
+               <x>0</x>
+               <y>0</y>
+               <width>164</width>
+               <height>107</height>
+              </rect>
+             </property>
+             <attribute name="label">
+              <string>Sems + Debug</string>
+             </attribute>
+             <layout class="QGridLayout" name="gridLayout_11">
+              <item row="0" column="0">
+               <widget class="QLabel" name="PARSER_LINE_RESULT_2">
+                <property name="text">
+                 <string>Result</string>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="1">
+               <widget class="QLabel" name="PARSER_LABEL_SEMS_2">
+                <property name="text">
+                 <string>Sems</string>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="0">
+               <widget class="QTextEdit" name="PARSER_TEXT_RESULT_2"/>
+              </item>
+              <item row="1" column="1">
+               <widget class="QTextEdit" name="PARSER_TEXT_SEMS_2">
+                <property name="maximumSize">
+                 <size>
+                  <width>200</width>
+                  <height>16777215</height>
+                 </size>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+        <widget class="QWidget" name="tab_8">
+         <attribute name="title">
+          <string>Settings</string>
+         </attribute>
+         <widget class="QLabel" name="label_bind_2">
+          <property name="geometry">
+           <rect>
+            <x>10</x>
+            <y>20</y>
+            <width>81</width>
+            <height>16</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>Server UDP port :</string>
+          </property>
+         </widget>
+         <widget class="QLineEdit" name="lineEdit_bind_2">
+          <property name="geometry">
+           <rect>
+            <x>100</x>
+            <y>20</y>
+            <width>113</width>
+            <height>21</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>16000</string>
+          </property>
+         </widget>
+         <widget class="QLabel" name="label_client_2">
+          <property name="geometry">
+           <rect>
+            <x>20</x>
+            <y>40</y>
+            <width>47</width>
+            <height>13</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>CLIENT</string>
+          </property>
+         </widget>
+         <widget class="QLineEdit" name="lineEdit_clientHost_2">
+          <property name="geometry">
+           <rect>
+            <x>10</x>
+            <y>60</y>
+            <width>131</width>
+            <height>21</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>127.0.0.1</string>
+          </property>
+         </widget>
+         <widget class="QLineEdit" name="line_clientPort_2">
+          <property name="geometry">
+           <rect>
+            <x>160</x>
+            <y>60</y>
+            <width>51</width>
+            <height>21</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>16001</string>
+          </property>
+         </widget>
+         <widget class="QLabel" name="label_6">
+          <property name="geometry">
+           <rect>
+            <x>140</x>
+            <y>40</y>
+            <width>71</width>
+            <height>16</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>Client Port</string>
+          </property>
+         </widget>
+         <widget class="QPushButton" name="btn_SettingsSave_2">
+          <property name="geometry">
+           <rect>
+            <x>220</x>
+            <y>20</y>
+            <width>80</width>
+            <height>61</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>Save</string>
+          </property>
+         </widget>
+         <widget class="QLineEdit" name="line_settingsViewSize_2">
+          <property name="geometry">
+           <rect>
+            <x>200</x>
+            <y>90</y>
+            <width>71</width>
+            <height>21</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>4</string>
+          </property>
+         </widget>
+         <widget class="QLineEdit" name="line_settingsStorageSize_2">
+          <property name="geometry">
+           <rect>
+            <x>200</x>
+            <y>110</y>
+            <width>71</width>
+            <height>21</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>86400</string>
+          </property>
+         </widget>
+         <widget class="QLabel" name="label_7">
+          <property name="geometry">
+           <rect>
+            <x>20</x>
+            <y>90</y>
+            <width>181</width>
+            <height>20</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>Отображать данные за последние</string>
+          </property>
+         </widget>
+         <widget class="QLabel" name="label_8">
+          <property name="geometry">
+           <rect>
+            <x>280</x>
+            <y>90</y>
+            <width>31</width>
+            <height>16</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>с.</string>
+          </property>
+         </widget>
+         <widget class="QLabel" name="label_9">
+          <property name="geometry">
+           <rect>
+            <x>50</x>
+            <y>110</y>
+            <width>181</width>
+            <height>16</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>Хранить данные для зума за </string>
+          </property>
+         </widget>
+         <widget class="QLabel" name="label_10">
+          <property name="geometry">
+           <rect>
+            <x>280</x>
+            <y>110</y>
+            <width>31</width>
+            <height>16</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>с.</string>
+          </property>
+         </widget>
+         <widget class="QTextBrowser" name="textBrowser">
+          <property name="geometry">
+           <rect>
+            <x>310</x>
+            <y>10</y>
+            <width>431</width>
+            <height>131</height>
+           </rect>
+          </property>
+         </widget>
+        </widget>
        </widget>
       </widget>
      </widget>
