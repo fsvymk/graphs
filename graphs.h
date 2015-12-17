@@ -131,6 +131,8 @@ private slots:
 
     void on_verticalSlider_valueChanged(int value);
 
+    void on_verticalSlider_actionTriggered(int action);
+
 private:
     Ui::graphs *ui;
 
@@ -152,6 +154,7 @@ private:
     quint16 clientPort;
     quint16 port;        //server port
 
+    quint32 shownSize;
 
     // Parser
     static const int LineSize = 32;

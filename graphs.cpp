@@ -162,6 +162,7 @@ void graphs::init(){
     ui->widget->setLayout(new QVBoxLayout);
     ui->widget->clearGraphs();
 
+    shownSize   = 5000; // as default;
     graphCount  = 20;   // max graph count;
 
     plots   = new QCustomPlot[graphCount];
@@ -281,8 +282,8 @@ void graphs::entryMassDeserialize(QByteArray* source,
         plots[i].replot();
         // удаление лишних данных
         //quint32 current = QDateTime::currentMSecsSinceEpoch();
-        quint32 current = QTime::currentTime().msecsSinceStartOfDay();
-        plots[i].graph(0)->removeDataBefore(current-shownSize);
+        quint32 current = QDateTime::currentDateTimeUtc().time().msecsSinceStartOfDay()/1000;
+        plots[i].graph(0)->removeDataBefore(current - 10000);
 
         plots[i].xAxis->rescale();
         plots[i].yAxis->rescale();
@@ -1442,5 +1443,11 @@ void graphs::on_btn_SettingsSave_clicked()
 
 void graphs::on_verticalSlider_valueChanged(int value)
 {
-    ui->lineEdit->setText(ss(value));
+    shownSize = 100 * (value + 10);
+    ui->lineEdit->setText(ss(shownSize));
+}
+
+void graphs::on_verticalSlider_actionTriggered(int action)
+{
+
 }
