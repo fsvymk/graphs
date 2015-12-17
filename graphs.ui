@@ -21,7 +21,7 @@
        <bool>true</bool>
       </property>
       <property name="currentIndex">
-       <number>0</number>
+       <number>3</number>
       </property>
       <widget class="QWidget" name="tab">
        <attribute name="title">
@@ -81,7 +81,11 @@
          </widget>
         </item>
         <item row="2" column="0" colspan="10">
-         <widget class="QTextEdit" name="main_text_bottom"/>
+         <widget class="QTextEdit" name="main_text_bottom">
+          <property name="readOnly">
+           <bool>true</bool>
+          </property>
+         </widget>
         </item>
         <item row="1" column="0" colspan="10">
          <widget class="QTextEdit" name="main_text_top">
@@ -90,6 +94,9 @@
             <width>16777215</width>
             <height>80</height>
            </size>
+          </property>
+          <property name="readOnly">
+           <bool>true</bool>
           </property>
          </widget>
         </item>
@@ -369,6 +376,9 @@ Block block_name_A
                 <height>16777215</height>
                </size>
               </property>
+              <property name="readOnly">
+               <bool>true</bool>
+              </property>
              </widget>
             </item>
             <item row="3" column="1">
@@ -385,6 +395,9 @@ Block block_name_A
                 <width>140</width>
                 <height>16777215</height>
                </size>
+              </property>
+              <property name="readOnly">
+               <bool>true</bool>
               </property>
              </widget>
             </item>

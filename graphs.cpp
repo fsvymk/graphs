@@ -283,7 +283,7 @@ void graphs::entryMassDeserialize(QByteArray* source,
         // удаление лишних данных
         //quint32 current = QDateTime::currentMSecsSinceEpoch();
         quint32 current = QDateTime::currentDateTimeUtc().time().msecsSinceStartOfDay()/1000;
-        plots[i].graph(0)->removeDataBefore(current - 10000);
+        plots[i].graph(0)->removeDataBefore(current - 8);
 
         plots[i].xAxis->rescale();
         plots[i].yAxis->rescale();
@@ -1432,11 +1432,19 @@ void graphs::on_line_clientPort_textChanged(const QString &arg1)
     ui->main_text_top->append("Client port = " + arg1);
 }
 
+void graphs::saveSettings(){
+
+}
+
 void graphs::on_btn_SettingsSave_clicked()
 {
     address = QHostAddress(ui->lineEdit_clientHost->text());
     port =  ui->lineEdit_bind->text().toInt();
     clientPort =ui->line_clientPort->text().toInt();
+    ui->PARSER_LINE_PORT->setText(ui->lineEdit_bind->text());
+    ui->PARSER_LINE_IP->setText(ui->lineEdit_clientHost->text());
+
+    saveSettings();
 
     ui->btn_SettingsSave->setDisabled(true);
 }
