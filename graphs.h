@@ -29,6 +29,7 @@ private slots:
     QString ss(long x);
     void t(QString str);
     void p(QString str);
+    void pa(QString str);
 
     // graphs:
     void entryMassDeserialize(QByteArray* source,
@@ -103,6 +104,7 @@ private slots:
     void  		bb(QByteArray str);
     void 		tt(QString str);
     void  		rb(QString str);
+    void  		pe(QString str);
     bool 		checkCommand(QString Command, int line);
     bool 		checkControlBy(QString ControlBy);
     bool 		checkOptions(QString Options);

@@ -99,11 +99,13 @@ void graphs::on_BTN_STOP_clicked()
 void graphs::on_PARSER_BUTTON_COMPILE_clicked()
 {
     //processScript();
+
+    splitBlocks();
 }
 
 void graphs::on_PARSER_BUTTON_split_clicked()
 {
-    splitBlocks();
+
 }
 
 void graphs::on_PARSER_BUTTON_X_clicked()
@@ -153,6 +155,10 @@ void graphs::t(QString str){
 
 void graphs::p(QString str){
     ui->main_text_bottom->append(str);
+}
+
+void graphs::pa(QString str){
+    ui->parser_codeEditor->append(str);
 }
 
 QString graphs::ss(long x){
@@ -605,6 +611,7 @@ void graphs::usecase_OpenFile()
          while (!in.atEnd()) {
              QString line = in.readLine();
              p(line);
+
          }
 }
 

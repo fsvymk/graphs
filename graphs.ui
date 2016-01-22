@@ -180,7 +180,7 @@
             <string>Main</string>
            </attribute>
            <layout class="QGridLayout" name="gridLayout_7">
-            <item row="8" column="0" colspan="9">
+            <item row="8" column="0" colspan="8">
              <widget class="CodeEditor" name="parser_codeEditor">
               <property name="sizePolicy">
                <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
@@ -344,7 +344,7 @@ Block block_name_A
               </property>
              </widget>
             </item>
-            <item row="3" column="3">
+            <item row="3" column="2">
              <widget class="QPushButton" name="PARSER_BUTTON_SEND">
               <property name="text">
                <string>SEND</string>
@@ -358,14 +358,14 @@ Block block_name_A
               </property>
              </widget>
             </item>
-            <item row="3" column="4">
+            <item row="3" column="3">
              <widget class="QLabel" name="PARSER_LABEL_IP">
               <property name="text">
                <string>IP</string>
               </property>
              </widget>
             </item>
-            <item row="3" column="7">
+            <item row="3" column="6">
              <widget class="QLineEdit" name="PARSER_LINE_PORT">
               <property name="maximumSize">
                <size>
@@ -379,13 +379,13 @@ Block block_name_A
              </widget>
             </item>
             <item row="3" column="1">
-             <widget class="QPushButton" name="PARSER_BUTTON_split">
+             <widget class="QPushButton" name="PARSER_BUTTON_X">
               <property name="text">
-               <string>SPLIT BLOCKS</string>
+               <string>X</string>
               </property>
              </widget>
             </item>
-            <item row="3" column="5">
+            <item row="3" column="4">
              <widget class="QLineEdit" name="PARSER_LINE_IP">
               <property name="maximumSize">
                <size>
@@ -398,14 +398,7 @@ Block block_name_A
               </property>
              </widget>
             </item>
-            <item row="3" column="2">
-             <widget class="QPushButton" name="PARSER_BUTTON_X">
-              <property name="text">
-               <string>X</string>
-              </property>
-             </widget>
-            </item>
-            <item row="3" column="6">
+            <item row="3" column="5">
              <widget class="QLabel" name="PARSER_LABEL_PORT">
               <property name="text">
                <string>Port</string>
