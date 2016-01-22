@@ -158,7 +158,7 @@ void graphs::p(QString str){
 }
 
 void graphs::pa(QString str){
-    ui->parser_codeEditor->append(str);
+    ui->parser_codeEditor->appendPlainText(str);
 }
 
 QString graphs::ss(long x){
@@ -611,7 +611,7 @@ void graphs::usecase_OpenFile()
          while (!in.atEnd()) {
              QString line = in.readLine();
              p(line);
-
+             pa(line); // open script in parser tab too.
          }
 }
 
