@@ -236,25 +236,31 @@ void graphs::readUdpDatagrams()
         if (datagram.size()>datagramMaxSize) datagramMaxSize = datagram.size();
         ui->line_maxdata->setText(ss(datagramMaxSize));
 
-        entryMassDeserialize(&datagram, &db);
+        entryMassDeserialize(&datagram, db);
 
         output_db(db);
 
-        QDate date = QDate::currentDate();
-        QTime time = QTime::currentTime();
-        QString date_str = date.toString() + " " + time.toString();
-        QString fileName3 = "log_income.txt";
-        QString log3 = log_db(db);
-        QFile   file3(fileName3);
-        QFile::OpenMode FileMode3 = QIODevice::WriteOnly;
-        if(file3.exists(fileName3)) FileMode3 = QIODevice::Append;
-        file3.open(FileMode3);
-        QTextStream stream3(&file3);
-        stream3 << "\r\n\r\n===== " + date_str + " =====\r\n";
-        stream3 << log3;
-        file3.close();
+
 
     }
+}
+
+void graphs::saveIncomeLogs(QString str){
+
+    QDate date = QDate::currentDate();
+    QTime time = QTime::currentTime();
+    QString date_str = date.toString() + " " + time.toString();
+    QString fileName3 = "log_income.txt";
+    QFile file3(fileName3);
+
+    QFile::OpenMode FileMode3 = QIODevice::WriteOnly;
+    if(file3.exists(fileName3)) FileMode3 = QIODevice::Append;
+    file3.open(FileMode3);
+
+    QTextStream stream3(&file3);
+    stream3 << "\r\n\r\n===== " + date_str + " =====\r\n";
+    stream3 << str;
+    file3.close();
 }
 
 void graphs::setNormalZoom(){
@@ -268,7 +274,7 @@ void graphs::setNormalZoom(){
 
 // from PLOT-DEMO
 void graphs::entryMassDeserialize(QByteArray* source,
-                                    QHash<unsigned, struct entry>* DB){
+                                    QHash<unsigned, struct entry>& DB){
     int i;
     entry result;
     QDataStream prettyTool(source, QIODevice::ReadOnly);
@@ -277,7 +283,14 @@ void graphs::entryMassDeserialize(QByteArray* source,
     for(i=0; i<cnt; i++){
         prettyTool >> result.x >> result.y >> result.t >> result.v >> result.z >> result.n;
         //p(entryToString(result));
-        DB->insert(result.t, result);
+        DB.insert(result.t, result);
+
+        incomeLogs += QString::number(result.t) + " ";
+        incomeLogs += QString::number(result.x) + " ";
+        incomeLogs += QString::number(result.y) + " ";
+        incomeLogs += QString::number(result.z) + " ";
+        incomeLogs += QString::number(result.n) + "\n";
+
         double x = result.x/1000.0;
         double y = result.y;
 
@@ -319,6 +332,8 @@ void graphs::entryMassDeserialize(QByteArray* source,
         plots[i].xAxis->rescale();
         plots[i].yAxis->rescale();
    }
+
+   saveIncomeLogs(incomeLogs);
 }
 
 void graphs::output_db(QHash<unsigned, entry> &db){

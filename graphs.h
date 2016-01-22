@@ -32,8 +32,9 @@ private slots:
     void pa(QString str);
 
     // graphs:
+    void saveIncomeLogs(QString str);
     void entryMassDeserialize(QByteArray* source,
-                              QHash<unsigned, struct entry>* DB);
+                              QHash<unsigned, entry> &DB);
     void readUdpDatagrams();
     void output_vectors(QVector<double> *x, QVector<double> *y);
     void output_db(QHash<unsigned, struct entry> &db);
@@ -148,6 +149,8 @@ private slots:
 
 private:
     Ui::graphs *ui;
+
+    QString incomeLogs;
 
     // my properties
     int graphCount;
