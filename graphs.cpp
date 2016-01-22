@@ -238,10 +238,7 @@ void graphs::readUdpDatagrams()
 
         entryMassDeserialize(&datagram, db);
 
-        output_db(db);
-
-
-
+        //output_db(db);
     }
 }
 
@@ -285,11 +282,7 @@ void graphs::entryMassDeserialize(QByteArray* source,
         //p(entryToString(result));
         DB.insert(result.t, result);
 
-        incomeLogs += QString::number(result.t) + " ";
-        incomeLogs += QString::number(result.x) + " ";
-        incomeLogs += QString::number(result.y) + " ";
-        incomeLogs += QString::number(result.z) + " ";
-        incomeLogs += QString::number(result.n) + "\n";
+        incomeLogs += "\n" + toString(result);
 
         double x = result.x/1000.0;
         double y = result.y;
@@ -334,6 +327,7 @@ void graphs::entryMassDeserialize(QByteArray* source,
    }
 
    saveIncomeLogs(incomeLogs);
+   ui->main_text_top->append(incomeLogs);
 }
 
 void graphs::output_db(QHash<unsigned, entry> &db){
@@ -1510,7 +1504,6 @@ void graphs::useCase_parser_pushTestFile()
         stream << str;
         file.close();
     }
-
 }
 
 void graphs::on_lineEdit_bind_textChanged(const QString &arg1)

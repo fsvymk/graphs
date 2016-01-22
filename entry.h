@@ -20,7 +20,7 @@
 
 struct entry{
     quint32 x;
-    quint32 y;   // 64 bits
+    qint32  y;   // 64 bits
     quint16 z;
     quint16 v;
     quint16 n;
@@ -38,14 +38,14 @@ static QString toString(entry s){
         QStringList resultDescr;
         resultDescr << "Не определено." << "Успешно." << "Не успешно." << "аварийный стоп.";
         QString rd = "";
-        if(s.n > 0 && s.n<4) rd = resultDescr[s.n];
+        if(s.z > 0 && s.z<4) rd = resultDescr[s.z];
 
         result.append(QString::number(s.t) + " " +
                       QString::number(s.v) + " " +
                       QString::number(s.x) + " " +
                       QString::number(s.y) + " " +
-                      QString::number(s.z) + " " +
-                      QString::number(s.n)) + " " + rd;
+                      QString::number(s.n) + " " +
+                      QString::number(s.z) + " - " + rd);
 
         return result;
 }

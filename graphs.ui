@@ -21,7 +21,7 @@
        <bool>true</bool>
       </property>
       <property name="currentIndex">
-       <number>3</number>
+       <number>0</number>
       </property>
       <widget class="QWidget" name="tab">
        <attribute name="title">
@@ -419,8 +419,8 @@ Block block_name_A
             <rect>
              <x>0</x>
              <y>0</y>
-             <width>733</width>
-             <height>331</height>
+             <width>264</width>
+             <height>119</height>
             </rect>
            </property>
            <attribute name="label">
