@@ -186,6 +186,7 @@ void graphs::init(){
     address    = QHostAddress(ui->lineEdit_clientHost->text());
     clientPort = ui->line_clientPort->text().toInt();
 
+    useCase_settings();
     ui->btn_SettingsSave->setDisabled(true);
 }
 
@@ -237,14 +238,22 @@ void graphs::readUdpDatagrams()
 
         entryMassDeserialize(&datagram, &db);
 
-        //QString output = "QHash db ["+QString::number(db.count())+"].";
-        //ui->main_text_top->append(output);
-
         output_db(db);
-        //output_vectors(&_x,&_y);
-        //draw(&_x,&_y);
-        //numbers(db);
-        //realTime_Redraw();
+
+        QDate date = QDate::currentDate();
+        QTime time = QTime::currentTime();
+        QString date_str = date.toString() + " " + time.toString();
+        QString fileName3 = "log_income.txt";
+        QString log3 = log_db(db);
+        QFile   file3(fileName3);
+        QFile::OpenMode FileMode3 = QIODevice::WriteOnly;
+        if(file3.exists(fileName3)) FileMode3 = QIODevice::Append;
+        file3.open(FileMode3);
+        QTextStream stream3(&file3);
+        stream3 << "\r\n\r\n===== " + date_str + " =====\r\n";
+        stream3 << log3;
+        file3.close();
+
     }
 }
 
@@ -263,7 +272,6 @@ void graphs::entryMassDeserialize(QByteArray* source,
     int i;
     entry result;
     QDataStream prettyTool(source, QIODevice::ReadOnly);
-
 
     int cnt = source->length()/sizeof(entry);
     for(i=0; i<cnt; i++){
@@ -321,11 +329,19 @@ void graphs::output_db(QHash<unsigned, entry> &db){
          }
 }
 
+QString graphs::log_db(QHash<unsigned, entry> &db){
+    QHash<unsigned, entry>::const_iterator i;
+    QString log;
+    for(i = db.constBegin(); i != db.constEnd(); ++i){
+         log += " " + QString::number(i.key()) + ":" + toString(i.value());
+    }
+    return log;
+}
+
 void graphs::numbers(QHash<unsigned, struct entry> &db){
     int it = 0;
     db.insert(0, deserialize(NULL));
 }
-
 
 void graphs::remove(QLayout* layout)
 {
@@ -470,9 +486,41 @@ void graphs::readUdpDatagrams_by_PM()
 
 void graphs::useCase_settings()
 {
-    port    = ui->line_clientPort->text().toInt();
-    address = QHostAddress(ui->lineEdit_clientHost->text());
-    clientPort = ui->line_clientPort->text().toInt();
+    /*
+     * reading settings.ini
+     * */
+    pe ("settings.ini");
+    QFile file("settings.ini");
+    QString addr;
+    QString cliPort;
+    QString prt;
+    if (file.open(QIODevice::ReadOnly | QIODevice::Text)){
+         QTextStream in(&file);
+         while (!in.atEnd()) {
+             QString line = in.readLine();
+             pe(line);
+             QStringList list = line.split(",");
+             if(list[0]=="client") {
+                 address    = QHostAddress(list[1]);
+                 addr       = list[1];
+                 cliPort    = list[2];
+                 clientPort = list[2].toInt();
+             }
+             if(list[0]=="server") {
+                 prt        = list[2];
+                 port       = list[2].toInt();
+             }
+             if(list[0]=="cache") {
+
+             }
+         }
+    } else {qDebug("settings.ini not found;");}
+
+    ui->line_clientPort_2->setText(cliPort);
+    ui->lineEdit_clientHost_2->setText(addr);
+    ui->lineEdit_bind_2->setText(prt);
+    ui->PARSER_LINE_IP->setText(addr);
+    ui->PARSER_LINE_PORT->setText(cliPort);
 }
 
 void graphs::useCase_window_testweb()
@@ -1351,6 +1399,7 @@ void graphs::saveLogs()
 
     QString log1 = ui->parser_codeEditor->toPlainText();
     QString log2 = ui->PARSER_TEXT_RESULT->toPlainText();
+
     log1.replace("\n","\r\n");
     log2.replace("\n","\r\n");
 
@@ -1379,8 +1428,10 @@ void graphs::saveLogs()
     stream1 << log1;
     stream2 << log2;
 
+
     file1.close();
     file2.close();
+
 }
 
 
@@ -1461,18 +1512,25 @@ void graphs::on_line_clientPort_textChanged(const QString &arg1)
 
 void graphs::saveSettings(){
 
+    QFile file("settings.ini");
+    QString str = "client," + ui->lineEdit_clientHost_2->text()+","+ui->line_clientPort_2->text();
+    str.append("\nserver,127.0.0.1," + ui->lineEdit_bind_2->text());
+    str.append("\ncache,4,86400");
+
+    if ( file.open(QIODevice::WriteOnly) )
+    {
+        QTextStream stream( &file );
+        stream << str;
+        file.close();
+    }
+    else{
+        pe("cann't write settings.\n");
+    }
 }
 
 void graphs::on_btn_SettingsSave_clicked()
 {
-    address = QHostAddress(ui->lineEdit_clientHost->text());
-    port =  ui->lineEdit_bind->text().toInt();
-    clientPort =ui->line_clientPort->text().toInt();
-    ui->PARSER_LINE_PORT->setText(ui->line_clientPort->text());
-    ui->PARSER_LINE_IP->setText(ui->lineEdit_clientHost->text());
-
     saveSettings();
-
     ui->btn_SettingsSave->setDisabled(true);
 }
 
@@ -1500,4 +1558,9 @@ void graphs::on_line_clientPort_2_textChanged(const QString &arg1)
 void graphs::on_btn_PARSER_SAVE_clicked()
 {
     useCase_parser_Save();
+}
+
+void graphs::on_btn_SettingsSave_2_clicked()
+{
+    saveSettings();
 }

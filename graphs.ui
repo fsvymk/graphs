@@ -21,7 +21,7 @@
        <bool>true</bool>
       </property>
       <property name="currentIndex">
-       <number>2</number>
+       <number>3</number>
       </property>
       <widget class="QWidget" name="tab">
        <attribute name="title">
@@ -1139,7 +1139,7 @@ Block block_name_A
            </rect>
           </property>
           <property name="text">
-           <string>16000</string>
+           <string>mail.ru</string>
           </property>
          </widget>
          <widget class="QLabel" name="label_client_2">
@@ -1165,7 +1165,7 @@ Block block_name_A
            </rect>
           </property>
           <property name="text">
-           <string>127.0.0.1</string>
+           <string>ya.ru</string>
           </property>
          </widget>
          <widget class="QLineEdit" name="line_clientPort_2">
@@ -1178,7 +1178,7 @@ Block block_name_A
            </rect>
           </property>
           <property name="text">
-           <string>16001</string>
+           <string>155</string>
           </property>
          </widget>
          <widget class="QLabel" name="label_6">
@@ -1236,14 +1236,14 @@ Block block_name_A
          <widget class="QLabel" name="label_7">
           <property name="geometry">
            <rect>
-            <x>20</x>
+            <x>10</x>
             <y>90</y>
             <width>181</width>
             <height>20</height>
            </rect>
           </property>
           <property name="text">
-           <string>Отображать данные за последние</string>
+           <string>Отображать данные за </string>
           </property>
          </widget>
          <widget class="QLabel" name="label_8">
@@ -1262,14 +1262,14 @@ Block block_name_A
          <widget class="QLabel" name="label_9">
           <property name="geometry">
            <rect>
-            <x>50</x>
+            <x>10</x>
             <y>110</y>
             <width>181</width>
             <height>16</height>
            </rect>
           </property>
           <property name="text">
-           <string>Хранить данные для зума за </string>
+           <string>Хранить для зума</string>
           </property>
          </widget>
          <widget class="QLabel" name="label_10">

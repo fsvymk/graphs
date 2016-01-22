@@ -37,6 +37,7 @@ private slots:
     void readUdpDatagrams();
     void output_vectors(QVector<double> *x, QVector<double> *y);
     void output_db(QHash<unsigned, struct entry> &db);
+ QString log_db(QHash<unsigned, struct entry> &db);
     void numbers(QHash<unsigned, struct entry> &db);
     void delete_graphs(QVBoxLayout* plotsLayout);
     void clear_plots(QCustomPlot* pl);
@@ -142,6 +143,8 @@ private slots:
     void on_line_clientPort_2_textChanged(const QString &arg1);
 
     void on_btn_PARSER_SAVE_clicked();
+
+    void on_btn_SettingsSave_2_clicked();
 
 private:
     Ui::graphs *ui;
