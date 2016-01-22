@@ -607,6 +607,7 @@ void graphs::usecase_OpenFile()
              return;
 
          ui->main_text_bottom->clear();
+         ui->parser_codeEditor->clear();
          QTextStream in(&file);
          while (!in.atEnd()) {
              QString line = in.readLine();
@@ -1404,8 +1405,6 @@ void graphs::useCase_parser_Save()
         stream << str;
         file.close();
     }
-
-
 }
 
 void graphs::useCase_parserOpen()
@@ -1496,4 +1495,9 @@ void graphs::on_pushButton_clicked()
 void graphs::on_line_clientPort_2_textChanged(const QString &arg1)
 {
 
+}
+
+void graphs::on_btn_PARSER_SAVE_clicked()
+{
+    useCase_parser_Save();
 }

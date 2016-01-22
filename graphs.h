@@ -141,6 +141,8 @@ private slots:
 
     void on_line_clientPort_2_textChanged(const QString &arg1);
 
+    void on_btn_PARSER_SAVE_clicked();
+
 private:
     Ui::graphs *ui;
 
