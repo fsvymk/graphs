@@ -137,6 +137,8 @@ private slots:
 
     void on_pushButton_clicked();
 
+    void on_line_clientPort_2_textChanged(const QString &arg1);
+
 private:
     Ui::graphs *ui;
 

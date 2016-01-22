@@ -6,6 +6,15 @@
 #include <testweb.h>
 #include <qcustomplot.h>
 
+/*
+ *
+ * 1. Знак
+17.12.15
+2. Диапазоны X
+3. Вывод информации
+4. Зум
+ * */
+
 graphs::graphs(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::graphs)
@@ -633,12 +642,12 @@ void graphs::splitBlocks()
     int BCR = str.count(")");
 
     if(BFL!=BFR){
-        rb("Err. 1: Brakes {} are not pair.");
+        pe("Err. 1: Brakes {} are not pair.");
         return;
     }
 
     if(BCL!=BCR){
-        rb("Err. 2: Brakes () are not pair.");
+        pe("Err. 2: Brakes () are not pair.");
         return;
     }
 
@@ -837,9 +846,13 @@ void graphs::tt(QString str)
     ui->PARSER_TEXT_RESULT->append(str);
 }
 
-void  graphs::rb(QString str)
+void graphs::rb(QString str)
 {
     ui->PARSER_TEXT_SEMS->append(str);
+}
+
+void graphs::pe(QString str){
+    ui->Parser_Errors->append(str);
 }
 
 
@@ -860,7 +873,7 @@ bool graphs::checkCommand(QString Command, int line)
     //int fL = Command.length();
     int fB = Command.indexOf("(");
     int fBe = Command.indexOf(")");
-    if(fB==-1) rb("Err. 12: There are not ( after command .. at line " + QString::number(line));
+    if(fB==-1) pe("Err. 12: There are not ( after command .. at line " + QString::number(line));
 
     QString CommandName = Command.left(fB);
     CommandName = CommandName.right(CommandName.length() - pos - test.length());
@@ -883,10 +896,10 @@ bool graphs::checkCommand(QString Command, int line)
 
     //b(QString::number(test_arg));
     //b(QString::number(test_val));
-    if (poe == -1)      rb("Err. 13: Command has not parameters. = is not found at line " + QString::number(line));
-    if (test_arg == -1) rb("Err. 14: No argument at line " + QString::number(line));
-    if (test_val == -1) rb("Err. 15: No value at line " + QString::number(line));
-    if (test_nam == -1) rb("Err. 16: What is your name, command? at line " + QString::number(line));
+    if (poe == -1)      pe("Err. 13: Command has not parameters. = is not found at line " + QString::number(line));
+    if (test_arg == -1) pe("Err. 14: No argument at line " + QString::number(line));
+    if (test_val == -1) pe("Err. 15: No value at line " + QString::number(line));
+    if (test_nam == -1) pe("Err. 16: What is your name, command? at line " + QString::number(line));
 
     if ((poe ==-1)  || (test_arg == -1) ||  (test_val == -1) ||  (test_nam == -1)) result = false;
 
@@ -980,13 +993,13 @@ QStringList graphs::Command_ControlBy_Options(QString step, int line)
     int j = step.indexOf(QR_ControlBy);
     int k = step.indexOf(QR_Options);
 
-    if(i<0) rb("Err. 4. There are not Command in Step " + QString::number(globalStepNumber) + " LINE " + QString::number(line));
-    if(j<0) rb("Err. 5. There are not Control By in Step "+QString::number(globalStepNumber)+" LINE " + QString::number(line));
-    if(k<0) rb("Err. 6. There are not Options in Step  "+ QString::number(globalStepNumber) + " LINE " + QString::number(line));
+    if(i<0) pe("Err. 4. There are not Command in Step " + QString::number(globalStepNumber) + " LINE " + QString::number(line));
+    if(j<0) pe("Err. 5. There are not Control By in Step "+QString::number(globalStepNumber)+" LINE " + QString::number(line));
+    if(k<0) pe("Err. 6. There are not Options in Step  "+ QString::number(globalStepNumber) + " LINE " + QString::number(line));
 
-    if (i>j) rb("Err 7. Command should stand in front of the ControlBy.\n");
-    if (j>k) rb("Err 8. ControlBy should stand in front of the Options.\n");
-    if (i>k) rb("Err 9. Command should stand in front of the Options.\n");
+    if (i>j) pe("Err 7. Command should stand in front of the ControlBy.\n");
+    if (j>k) pe("Err 8. ControlBy should stand in front of the Options.\n");
+    if (i>k) pe("Err 9. Command should stand in front of the Options.\n");
 
     // Проверить, чтобы не было при этом ничего лишнего.
     // Способ 1: Проверять в Step. Можно проверить
@@ -1003,10 +1016,10 @@ QStringList graphs::Command_ControlBy_Options(QString step, int line)
 
     QRegExp TrashWord("\\w");
     int checkTrashWord = TrashWord.indexIn(checkTrash);
-    if(checkTrashWord!=-1) rb("Err. 10: " + QString::number(checkTrashWord) + " at line " + QString::number(line));
+    if(checkTrashWord!=-1) pe("Err. 10: " + QString::number(checkTrashWord) + " at line " + QString::number(line));
 
     int FB = checkTrash.count("{");
-    if(FB!=1) rb("Err. 11: There are not { after Step " + QString::number(globalStepNumber) + " at line " +  QString::number(line));
+    if(FB!=1) pe("Err. 11: There are not { after Step " + QString::number(globalStepNumber) + " at line " +  QString::number(line));
     checkTrash.replace("\{", "");
 
     QString Command =   step.mid(i, j-i);
@@ -1266,7 +1279,7 @@ QByteArray graphs::processScript(QString value, QStringList numbers, const QMap<
 
         if(VL > 0) // если ключевое слово длинее нуля символов
         {
-            rb("Err.3 Wrong keyword. " + value + " at line " + SLine); // // + " has not sem. length = " + QString::number(VL));
+            pe("Err.3 Wrong keyword. " + value + " at line " + SLine); // // + " has not sem. length = " + QString::number(VL));
         }
     }
     else
@@ -1471,4 +1484,9 @@ void graphs::on_verticalSlider_actionTriggered(int action)
 void graphs::on_pushButton_clicked()
 {
     setNormalZoom();
+}
+
+void graphs::on_line_clientPort_2_textChanged(const QString &arg1)
+{
+
 }
