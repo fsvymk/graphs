@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>773</width>
+    <width>993</width>
     <height>522</height>
    </rect>
   </property>
@@ -172,8 +172,8 @@
             <rect>
              <x>0</x>
              <y>0</y>
-             <width>733</width>
-             <height>331</height>
+             <width>553</width>
+             <height>129</height>
             </rect>
            </property>
            <attribute name="label">
@@ -660,9 +660,9 @@ Block block_name_A
        <widget class="QTabWidget" name="tabWidget_2">
         <property name="geometry">
          <rect>
-          <x>0</x>
-          <y>-30</y>
-          <width>755</width>
+          <x>70</x>
+          <y>170</y>
+          <width>391</width>
           <height>445</height>
          </rect>
         </property>
@@ -824,8 +824,8 @@ Block block_name_A
               <rect>
                <x>0</x>
                <y>0</y>
-               <width>733</width>
-               <height>332</height>
+               <width>588</width>
+               <height>319</height>
               </rect>
              </property>
              <attribute name="label">
@@ -1307,7 +1307,7 @@ Block block_name_A
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>773</width>
+     <width>993</width>
      <height>25</height>
     </rect>
    </property>
