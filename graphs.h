@@ -47,7 +47,7 @@ private slots:
     void setNormalZoom();
     void saveSettings();
     void on_main_button_server_start_clicked();
-
+    void closeServer();
     //four.h
 
     QByteArray makeNewDatagram();

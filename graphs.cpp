@@ -387,6 +387,9 @@ void graphs::output_vectors(QVector<double>* x, QVector<double>* y){
     }
 }
 
+void graphs::closeServer(){
+    udpServerSocket.close();
+}
 
 void graphs::bindUdpPort()
 {
@@ -1525,6 +1528,9 @@ void graphs::saveSettings(){
     str.append("\nserver,127.0.0.1," + ui->lineEdit_bind_2->text());
     str.append("\ncache,4,86400");
 
+    ui->PARSER_LINE_IP->setText(ui->lineEdit_clientHost_2->text());
+    ui->PARSER_LINE_PORT->setText(ui->lineEdit_bind_2->text());
+
     if ( file.open(QIODevice::WriteOnly) )
     {
         QTextStream stream( &file );
@@ -1571,4 +1577,6 @@ void graphs::on_btn_PARSER_SAVE_clicked()
 void graphs::on_btn_SettingsSave_2_clicked()
 {
     saveSettings();
+    closeServer();
+    bindUdpPort();
 }

@@ -15,13 +15,13 @@
   </property>
   <widget class="QWidget" name="centralWidget">
    <layout class="QGridLayout" name="gridLayout">
-    <item row="0" column="1">
+    <item row="0" column="0">
      <widget class="QTabWidget" name="tabWidget">
       <property name="autoFillBackground">
        <bool>true</bool>
       </property>
       <property name="currentIndex">
-       <number>0</number>
+       <number>3</number>
       </property>
       <widget class="QWidget" name="tab">
        <attribute name="title">
@@ -824,8 +824,8 @@ Block block_name_A
               <rect>
                <x>0</x>
                <y>0</y>
-               <width>588</width>
-               <height>129</height>
+               <width>733</width>
+               <height>332</height>
               </rect>
              </property>
              <attribute name="label">
@@ -1139,7 +1139,7 @@ Block block_name_A
            </rect>
           </property>
           <property name="text">
-           <string>mail.ru</string>
+           <string>16000</string>
           </property>
          </widget>
          <widget class="QLabel" name="label_client_2">
@@ -1276,7 +1276,7 @@ Block block_name_A
           <property name="geometry">
            <rect>
             <x>280</x>
-            <y>110</y>
+            <y>90</y>
             <width>31</width>
             <height>16</height>
            </rect>
