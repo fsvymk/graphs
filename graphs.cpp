@@ -1596,7 +1596,7 @@ void graphs::useCase_connect_Slot()
 
 void graphs::on_pushButton_settings_search_clicked()
 {
-
+    oprosb();
 }
 
 void graphs::on_pushButton_settings_connect_clicked()
