@@ -194,6 +194,8 @@ void graphs::init(){
 
     useCase_settings();
     ui->btn_SettingsSave->setDisabled(true);
+
+
 }
 
 void graphs::delete_graphs(QVBoxLayout* plotsLayout)
@@ -235,6 +237,21 @@ void graphs::readUdpDatagrams()
 
         udpServerSocket.readDatagram(datagram.data(), datagram.size(),
                                 &sender, &senderPort);
+
+        // Add host by hot steps:
+        QString current = sender.toString();
+
+        // Of course if it doesn't added.
+        if(allHosts.indexOf(current)){
+            allHosts.append(current);
+            int rowNum = ui->tableWidget_settings_search->rowCount();
+            ui->tableWidget_settings_search->setRowCount(rowNum + 1);
+            ui->tableWidget_settings_search->setColumnCount(1);
+            QTableWidgetItem* hostItem = new QTableWidgetItem;
+            hostItem->setText(current);
+            hostItem->setTextAlignment(Qt::AlignCenter);
+            ui->tableWidget_settings_search->setItem(ui->tableWidget_settings_search->rowCount() - 1, 0, hostItem);
+        }
 
         datagramCounter++;
         ui->line_datagrams->setText(ss(datagramCounter));

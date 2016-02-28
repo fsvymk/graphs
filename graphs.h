@@ -169,6 +169,9 @@ private:
 
     QString incomeLogs;
 
+    // External Hosts:
+    QStringList allHosts;
+
     // my properties
     int graphCount;
     QUdpSocket udpSocket;
