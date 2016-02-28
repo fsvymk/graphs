@@ -32,6 +32,7 @@ graphs::~graphs()
 void graphs::on_main_button_server_start_clicked()
 {
     bindUdpPort();
+    ui->pushButton_stop->setEnabled(true);
 }
 
 // Buttons:
@@ -1540,6 +1541,9 @@ void graphs::saveSettings(){
     else{
         pe("cann't write settings.\n");
     }
+
+    ui->pushButton_stop->setEnabled(true);
+    ui->pushButton_restart->setEnabled(true);
 }
 
 void graphs::on_btn_SettingsSave_clicked()
@@ -1602,4 +1606,30 @@ void graphs::on_pushButton_settings_search_clicked()
 void graphs::on_pushButton_settings_connect_clicked()
 {
     useCase_connect_Slot();
+}
+
+void graphs::on_pushButton_4_clicked()
+{
+    ui->line_datagrams->setText("");
+    ui->line_maxdata->setText("");
+}
+
+void graphs::on_pushButton_restart_clicked()
+{
+
+}
+
+void graphs::on_pushButton_stop_clicked()
+{
+    udpServerSocket.close(); // Plese, create same function on code growing.
+}
+
+void graphs::on_pushButton_erase_top_clicked()
+{
+    ui->main_text_top->clear();
+}
+
+void graphs::on_pushButton_erase_bottom_clicked()
+{
+    ui->main_text_bottom->clear();
 }

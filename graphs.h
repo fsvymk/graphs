@@ -153,6 +153,12 @@ private slots:
 
     void on_pushButton_settings_connect_clicked();
 
+    void on_pushButton_4_clicked();
+
+    void on_pushButton_restart_clicked();
+
+    void on_pushButton_stop_clicked();
+
 private:
     Ui::graphs *ui;
 
