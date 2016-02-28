@@ -1529,7 +1529,7 @@ void graphs::saveSettings(){
     str.append("\ncache,4,86400");
 
     ui->PARSER_LINE_IP->setText(ui->lineEdit_clientHost->text());
-    ui->PARSER_LINE_PORT->setText(ui->lineEdit_bind->text());
+    ui->PARSER_LINE_PORT->setText(ui->line_clientPort->text());
 
     if ( file.open(QIODevice::WriteOnly) )
     {
