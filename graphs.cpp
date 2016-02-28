@@ -28,11 +28,16 @@ graphs::~graphs()
     delete ui;
 }
 
+void graphs::useCase_stop_restart_enable(){
+    ui->pushButton_stop->setEnabled(true);
+    ui->pushButton_restart->setEnabled(true);
+}
+
 // Events
 void graphs::on_main_button_server_start_clicked()
 {
     bindUdpPort();
-    ui->pushButton_stop->setEnabled(true);
+    useCase_stop_restart_enable();
 }
 
 // Buttons:
@@ -1512,7 +1517,8 @@ void graphs::useCase_parser_pushTestFile()
 
 void graphs::on_lineEdit_bind_textChanged(const QString &arg1)
 {
-    ui->main_text_top->append("Server port = " + arg1);
+    //ui->main_text_top->append("Server port = " + arg1);
+    ui->label_server_info->setText(arg1);
     ui->btn_SettingsSave->setEnabled(true);
 }
 
@@ -1542,8 +1548,8 @@ void graphs::saveSettings(){
         pe("cann't write settings.\n");
     }
 
-    ui->pushButton_stop->setEnabled(true);
-    ui->pushButton_restart->setEnabled(true);
+    ui->main_text_top->append("Server port = " +  ui->lineEdit_bind->text());
+    useCase_stop_restart_enable();
 }
 
 void graphs::on_btn_SettingsSave_clicked()
@@ -1616,12 +1622,20 @@ void graphs::on_pushButton_4_clicked()
 
 void graphs::on_pushButton_restart_clicked()
 {
+    udpServerSocket.close();
 
+    ui->pushButton_restart->setEnabled(false);
+    ui->pushButton_stop->setEnabled(true);
+
+    bindUdpPort();
 }
 
 void graphs::on_pushButton_stop_clicked()
 {
     udpServerSocket.close(); // Plese, create same function on code growing.
+    ui->main_button_server_start->setEnabled(true);
+    ui->pushButton_restart->setEnabled(false);
+    ui->pushButton_stop->setEnabled(false);
 }
 
 void graphs::on_pushButton_erase_top_clicked()
