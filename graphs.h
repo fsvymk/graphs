@@ -66,6 +66,8 @@ private slots:
     void useCase_window_mainwindow();
     void useCase_window_parser();
 
+    void useCase_connect_Slot();
+
     void useCase_send_ffff();
     void useCase_send_0000();
     void useCase_send_1111();
@@ -146,6 +148,10 @@ private slots:
     void on_btn_PARSER_SAVE_clicked();
 
     void on_btn_SettingsSave_2_clicked();
+
+    void on_pushButton_settings_search_clicked();
+
+    void on_pushButton_settings_connect_clicked();
 
 private:
     Ui::graphs *ui;

@@ -528,9 +528,9 @@ void graphs::useCase_settings()
          }
     } else {qDebug("settings.ini not found;");}
 
-    ui->line_clientPort_2->setText(cliPort);
-    ui->lineEdit_clientHost_2->setText(addr);
-    ui->lineEdit_bind_2->setText(prt);
+    ui->line_clientPort->setText(cliPort);
+    ui->lineEdit_clientHost->setText(addr);
+    ui->lineEdit_bind->setText(prt);
     ui->PARSER_LINE_IP->setText(addr);
     ui->PARSER_LINE_PORT->setText(cliPort);
 }
@@ -1524,12 +1524,12 @@ void graphs::on_line_clientPort_textChanged(const QString &arg1)
 void graphs::saveSettings(){
 
     QFile file("settings.ini");
-    QString str = "client," + ui->lineEdit_clientHost_2->text()+","+ui->line_clientPort_2->text();
-    str.append("\nserver,127.0.0.1," + ui->lineEdit_bind_2->text());
+    QString str = "client," + ui->lineEdit_clientHost->text()+","+ui->line_clientPort->text();
+    str.append("\nserver,127.0.0.1," + ui->lineEdit_bind->text());
     str.append("\ncache,4,86400");
 
-    ui->PARSER_LINE_IP->setText(ui->lineEdit_clientHost_2->text());
-    ui->PARSER_LINE_PORT->setText(ui->lineEdit_bind_2->text());
+    ui->PARSER_LINE_IP->setText(ui->lineEdit_clientHost->text());
+    ui->PARSER_LINE_PORT->setText(ui->lineEdit_bind->text());
 
     if ( file.open(QIODevice::WriteOnly) )
     {
@@ -1579,4 +1579,27 @@ void graphs::on_btn_SettingsSave_2_clicked()
     saveSettings();
     closeServer();
     bindUdpPort();
+}
+
+// Dima: connect to slot.
+void graphs::useCase_connect_Slot()
+{
+    QList<QTableWidgetItem*> selected = ui->tableWidget_settings_search->selectedItems();
+    if (selected.size() > 0){
+        int row = selected[0]->row();
+        QString ip = ui->tableWidget_settings_search->item(row, 0)->text();
+        ui->lineEdit_clientHost->setText(ip);
+        quint16 port = ui->tableWidget_settings_search->item(row, 1)->text().toUInt();
+        ui->line_clientPort->setText(QString::number(port));
+    }
+}
+
+void graphs::on_pushButton_settings_search_clicked()
+{
+
+}
+
+void graphs::on_pushButton_settings_connect_clicked()
+{
+    useCase_connect_Slot();
 }

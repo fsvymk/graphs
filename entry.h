@@ -18,6 +18,15 @@
 #include <QMap>
 #include <QDataStream>
 
+struct ansi_entry{
+           unsigned x;
+                int y;
+    unsigned  short z;
+    unsigned  short v;
+    unsigned  short n;
+    unsigned  short t;
+};
+
 struct entry{
     quint32 x;
     qint32  y;   // 64 bits
