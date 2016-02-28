@@ -21,7 +21,7 @@
        <bool>true</bool>
       </property>
       <property name="currentIndex">
-       <number>0</number>
+       <number>3</number>
       </property>
       <widget class="QWidget" name="tab">
        <attribute name="title">
@@ -2024,9 +2024,9 @@ Block block_name_A
        <widget class="QPushButton" name="pushButton_settings_connect">
         <property name="geometry">
          <rect>
-          <x>35</x>
+          <x>7</x>
           <y>180</y>
-          <width>93</width>
+          <width>121</width>
           <height>31</height>
          </rect>
         </property>
@@ -2037,9 +2037,9 @@ Block block_name_A
        <widget class="QPushButton" name="pushButton_settings_search">
         <property name="geometry">
          <rect>
-          <x>35</x>
+          <x>7</x>
           <y>150</y>
-          <width>93</width>
+          <width>121</width>
           <height>28</height>
          </rect>
         </property>

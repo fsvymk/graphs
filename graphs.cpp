@@ -246,11 +246,15 @@ void graphs::readUdpDatagrams()
             allHosts.append(current);
             int rowNum = ui->tableWidget_settings_search->rowCount();
             ui->tableWidget_settings_search->setRowCount(rowNum + 1);
-            ui->tableWidget_settings_search->setColumnCount(1);
+            ui->tableWidget_settings_search->setColumnCount(2);
             QTableWidgetItem* hostItem = new QTableWidgetItem;
             hostItem->setText(current);
             hostItem->setTextAlignment(Qt::AlignCenter);
+            QTableWidgetItem* portItem = new QTableWidgetItem;
+            portItem->setText(QString::number(senderPort));
+            portItem->setTextAlignment(Qt::AlignCenter);
             ui->tableWidget_settings_search->setItem(ui->tableWidget_settings_search->rowCount() - 1, 0, hostItem);
+            ui->tableWidget_settings_search->setItem(ui->tableWidget_settings_search->rowCount() - 1, 1, portItem);
         }
 
         datagramCounter++;
@@ -301,6 +305,8 @@ void graphs::entryMassDeserialize(QByteArray* source,
 
     int cnt = source->length()/sizeof(entry);
     for(i=0; i<cnt; i++){
+
+        // Здесь задается и меняется структура пакета.
         prettyTool >> result.x >> result.y >> result.t >> result.v >> result.z >> result.n;
         //p(entryToString(result));
         DB.insert(result.t, result);
