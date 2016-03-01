@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>993</width>
+    <width>1001</width>
     <height>522</height>
    </rect>
   </property>
@@ -21,7 +21,7 @@
        <bool>true</bool>
       </property>
       <property name="currentIndex">
-       <number>3</number>
+       <number>2</number>
       </property>
       <widget class="QWidget" name="tab">
        <attribute name="title">
@@ -1526,7 +1526,7 @@
             <rect>
              <x>0</x>
              <y>0</y>
-             <width>953</width>
+             <width>961</width>
              <height>331</height>
             </rect>
            </property>
@@ -2093,7 +2093,7 @@ Block block_name_A
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>993</width>
+     <width>1001</width>
      <height>25</height>
     </rect>
    </property>

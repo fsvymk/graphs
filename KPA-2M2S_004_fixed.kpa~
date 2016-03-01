@@ -1,0 +1,20 @@
+Block Kpa_4r1
+{
+	step1{set(voltage = 1)
+		control_by{}
+		options{}
+		}
+	step2{get(port = 'kpa_2m2c')
+		control_by{}
+		options{}
+		}
+	step3{compare(voltage = 1, port = 'kpa_2m2c', result = true)
+		control_by{port = 'kpa_2m2c', wait = 'data'}
+		options{step = 'on_end', result = true}
+		}
+	step4{send(result = 'compare')
+		control_by {step = 'previous', wait = 'on_end'}
+		options{end_block = 'true'}
+		}
+}
+
