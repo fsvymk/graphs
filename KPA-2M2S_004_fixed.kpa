@@ -1,20 +1,28 @@
 Block Kpa_4r1
 {
-	step1 procedure(){set(voltage = 1)
-		control_by{}
-		options{}
+	step1 procedure(){
+		Command set(voltage = 1)
+		control_by(){}
+		options(){}
 		}
-	step2 procedure(){get(port = 'kpa_2m2c')
-		control_by{}
-		options{}
+	step2 procedure(){
+		Command get(port = 'kpa_2m2c')
+		control_by(){}
+		options(){}
 		}
-	step3 procedure(){compare(voltage = 1, port = 'kpa_2m2c', result = true)
-		control_by{port = 'kpa_2m2c', wait = 'data'}
-		options{step = 'on_end', result = true}
+	step3 procedure(){
+		Command compare(voltage = 1, port = 'kpa_2m2c', result = true)
+		control_by(){port = 'kpa_2m2c', wait = 'data'}
+		options(){step = 'on_end', result = true}
 		}
-	step4 procedure(){send(result = 'compare')
-		control_by {step = 'previous', wait = 'on_end'}
-		options{end_block = 'true'}
+	step4 procedure(){
+		Command send(result = 'compare')
+		control_by()
+		{
+			step(previous = 'yes')
+			wait(on_end = 'yes')
+		}
+		options(){end_block = 'true'}
 		}
 }
 

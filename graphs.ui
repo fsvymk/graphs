@@ -1543,157 +1543,32 @@
                </sizepolicy>
               </property>
               <property name="plainText">
-               <string>Block block_name
+               <string>Block Kpa_4r1
 {
-	step1 
-	{
-		command command_name(param1=n, param2=m,paramn=s)
-		Control_by()
+	step1 procedure(){
+		Command set(voltage = 1)
+		control_by(){}
+		options(){}
+		}
+	step2 procedure(){
+		Command get(port = 'kpa_2m2c')
+		control_by(){}
+		options(){}
+		}
+	step3 procedure(){
+		Command compare(voltage = 1, port = 'kpa_2m2c', result = true)
+		control_by(){port = 'kpa_2m2c', wait = 'data'}
+		options(){step = 'on_end', result = true}
+		}
+	step4 procedure(){
+		Command send(result = 'compare')
+		control_by()
 		{
-			step1 (end = 'yes')
-			Calibr (result  = 'true')
+			step(previous = 'yes')
+			wait(on_end = 'yes')
 		}
-		Options()
-		{ 
-			scanner (port  = 'port_name')
-			Call (step = 4)
-			On_end(step = '6' )
+		options(){end_block = 'true'}
 		}
-	}
-	
-	Step2 
-	{
-		command command_name(param1=n, param2=m,paramn=s)
-		Control_by()
-		{
-			step1 (end = 'yes')
-			Calibr (result  = 'true')
-		}
-		Options()
-		{ 
-			scanner (port  = 'port_name')
-			Call (step = 4)
-			On_end(step = '6' )
-		}
-	}
-	
-	step7 
-	{
-		command command_name(param1=n, param2=m,paramn=s)
-		Control_by()
-		{
-			step1 (end = 'yes')
-			Calibr (result  = 'true')
-		}
-		Options()
-		{ 
-			scanner (port  = 'port_name')
-			Call (step = 4)
-			On_end(step = '6' )
-		}
-	}
-}
-
-Block block_name_B
-{
-	step8 
-	{
-		command command_name(param1=n, param2=m,paramn=s)
-		Control_by()
-		{
-			step1 (end = 'yes')
-			Calibr (result  = 'true')
-		}
-		Options()
-		{ 
-			scanner (port  = 'port_name')
-			Call (step = 4)
-			On_end(step = '6' )
-		}
-	}
-	
-	Step5 
-	{
-		command command_name(param1=n, param2=m, paramn=s)
-		Control_by()
-		{
-			step1 (end = 'yes')
-			Calibr (result  = 'true')
-		}
-		Options()
-		{ 
-			scanner (port  = 'port_name')
-			Call (step = 4)
-			On_end(step = '6')
-		}
-	}
-	
-	step4 
-	{
-		command command_name(param1=n, param2=m,paramn=s)
-		Control_by()
-		{
-			step1 (end = 'yes')
-			Calibr (result  = 'true')
-		}
-		Options()
-		{ 
-			scanner (port  = 'port_name')
-			Call (step = 4)
-			On_end(step = '6' )
-		}
-	}
-}
-
-Block block_name_A
-{
-	step34 
-	{
-		command command_name(param1=n, param2=m,paramn=s)
-		Control_by()
-		{
-			step1 (end = 'yes')
-			Calibr (result  = 'true')
-		}
-		Options()
-		{ 
-			scanner (port  = 'port_name')
-			Call (step = 4)
-			On_end(step = '6' )
-		}
-	}
-	
-	Step64 
-	{
-		command command_name(param1=n, param2=m,paramn=s)
-		Control_by()
-		{
-			step1 (end = 'yes')
-			Calibr (result  = 'true')
-		}
-		Options()
-		{ 
-			scanner (port  = 'port_name')
-			Call (step = 4)
-			On_end(step = '6' )
-		}
-	}
-	
-	step23 
-	{
-		command command_name(param1=n, param2=m,paramn=s)
-		Control_by()
-		{
-			step1 (end = 'yes')
-			Calibr (result  = 'true')
-		}
-		Options()
-		{ 
-			scanner (port  = 'port_name')
-			Call (step = 4)
-			On_end(step = 6)
-		}
-	}
 }</string>
               </property>
              </widget>

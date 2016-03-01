@@ -94,7 +94,7 @@
 	<name>false</name>
 	</sem>
 
-        <sem id ="246">
+	<sem id ="246">
 	<name>set</name>
 	</sem>
 
@@ -105,9 +105,11 @@
 	<sem id ="248">
 	<name>compare</name>
         </sem>
-
 	<sem id ="251">
 	<name>send</name>
+        </sem>
+        <sem id ="300">
+        <name>wait</name>
         </sem>
 
 
