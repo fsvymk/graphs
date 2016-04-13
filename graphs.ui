@@ -1527,7 +1527,7 @@
              <x>0</x>
              <y>0</y>
              <width>961</width>
-             <height>331</height>
+             <height>340</height>
             </rect>
            </property>
            <attribute name="label">
@@ -1545,22 +1545,22 @@
               <property name="plainText">
                <string>Block Kpa_4r1
 {
-	step1 procedure(){
+step1 procedure(){
 		Command set(voltage = 1)
 		control_by(){}
 		options(){}
 		}
-	step2 procedure(){
+step2 procedure(){
 		Command get(port = 'kpa_2m2c')
 		control_by(){}
 		options(){}
 		}
-	step3 procedure(){
+step3 procedure(){
 		Command compare(voltage = 1, port = 'kpa_2m2c', result = true)
 		control_by(){port = 'kpa_2m2c', wait = 'data'}
 		options(){step = 'on_end', result = true}
 		}
-	step4 procedure(){
+step4 procedure(){
 		Command send(result = 'compare')
 		control_by()
 		{
@@ -1648,8 +1648,8 @@
             <rect>
              <x>0</x>
              <y>0</y>
-             <width>264</width>
-             <height>119</height>
+             <width>240</width>
+             <height>109</height>
             </rect>
            </property>
            <attribute name="label">
@@ -1969,7 +1969,7 @@
      <x>0</x>
      <y>0</y>
      <width>1001</width>
-     <height>25</height>
+     <height>20</height>
     </rect>
    </property>
   </widget>

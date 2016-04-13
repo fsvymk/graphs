@@ -173,8 +173,8 @@ QString graphs::ss(long x){
 
 void graphs::init(){
 
-    connect(&udpServerSocket, SIGNAL(readyRead()),
-            this, SLOT(readUdpDatagrams()));
+     connect(&udpServerSocket, SIGNAL(readyRead()),
+                this, SLOT(readUdpDatagrams()));
     datagramCounter = 0;
     datagramMaxSize = 0;
 
@@ -1109,11 +1109,13 @@ QStringList graphs::Command_ControlBy_Options(QString step, int line)
     __OptionsLine = whatLine(step, k);
 
     // нет ли чего лишнего перед Command.
-    QString checkTrash = step.left(i);
 
+    QString checkTrash = step.left(i);
     QRegExp TrashWord("\\w");
     int checkTrashWord = TrashWord.indexIn(checkTrash);
-    if(checkTrashWord!=-1) pe("Err. 10: " + QString::number(checkTrashWord) + " at line " + QString::number(line));
+
+    // deprecated. Now,
+    //if(checkTrashWord!=-1) pe("Err. 10: " + QString::number(checkTrashWord) + " at line " + QString::number(line));
 
     int FB = checkTrash.count("{");
     if(FB!=1) pe("Err. 11: There are not { after Step " + QString::number(globalStepNumber) + " at line " +  QString::number(line));
